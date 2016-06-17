@@ -25,15 +25,15 @@ func createPoint(waypoint gpx.Wpt) Point {
 }
 
 func main() {
-	gpcFilePath := flag.String("gpx-file", "", "GPX file path")
+	gpxFilePath := flag.String("gpx-file", "", "GPX file path")
 	flag.Parse()
 
-	if *gpcFilePath == "" {
+	if *gpxFilePath == "" {
 		fmt.Println("Use --gpx-file parameter to specify gpx file path")
 		os.Exit(1)
 	}
 
-	route, err := gpx.ParseFile(*gpcFilePath)
+	route, err := gpx.ParseFile(*gpxFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
