@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>АПИ Сал вам аписал</title>
+    </head>
+    <body>
+        {{range .}}
+            <h2>{{ .Title }}</h2>
+            <p>{{ .Description }}</p>
+            {{if .Images}}
+                <ul>
+                    {{range .Images}}
+                        <li><img src="{{.Url}}" width="{{.W}}" height="{{.H}}" title="{{.Title}}" /></li>
+                    {{end}}
+                </ul>
+            {{end}}
+        {{else}}
+            <p>Сорян, нет объектов.</p>
+        {{end}}
+    </body>
+</html>
