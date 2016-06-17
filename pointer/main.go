@@ -4,18 +4,35 @@ import (
 	"fmt"
 	"log"
 	gpx "github.com/ptrv/go-gpx"
-	"time"
+	"encoding/json"
+	"flag"
+	"os"
 )
 
-// {"lat":0.5, "lon": 0.5, "time": "2016-06-17T20:30:25+0000"}
 type Point struct {
 	Latitude float64 `json:"lat"`
 	Longitude float64 `json:"lon"`
-	Time time.Time `json:"time"`
+	Time string `json:"time"`
+}
+
+func createPoint(waypoint gpx.Wpt) Point {
+	return Point{
+		Latitude: waypoint.Lat,
+		Longitude: waypoint.Lon,
+		Time: waypoint.Timestamp,
+	}
 }
 
 func main() {
-	route, err := gpx.ParseFile("./simple.gpx")
+	gpcFilePath := flag.String("gpx-file", "", "GPX file path")
+	flag.Parse()
+
+	if *gpcFilePath == "" {
+		fmt.Println("Use --gpx-file parameter to specify gpx file path")
+		os.Exit(1)
+	}
+
+	route, err := gpx.ParseFile(*gpcFilePath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -23,9 +40,13 @@ func main() {
 	for _, track := range route.Tracks {
 		for _, segment := range track.Segments {
 			for _, waypoint := range segment.Waypoints {
-				fmt.Println(waypoint.Lat)
-				fmt.Println(waypoint.Lon)
-				fmt.Println(waypoint.Timestamp)
+				point := createPoint(waypoint)
+				jsonBytes, err := json.Marshal(point)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				fmt.Println(string(jsonBytes))
 			}
 		}
 	}
