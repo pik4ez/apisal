@@ -17,6 +17,7 @@ type Point struct {
 }
 
 type Object struct {
+
 }
 
 type WikiObject struct {
@@ -24,9 +25,10 @@ type WikiObject struct {
 }
 
 func main() {
-	if os.Stdin == nil {
-		log.Fatal("sdfsdf")
+	if s, err := os.Stdin.Stat(); err != nil || s.Size() == 0 {
+		log.Fatal("stdin is empty!")
 	}
+
 	points, err := AllPoints(os.Stdin)
 	if err != nil {
 		log.Fatal(err)
