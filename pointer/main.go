@@ -1,25 +1,26 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	gpx "github.com/ptrv/go-gpx"
 	"encoding/json"
 	"flag"
+	"fmt"
+	"log"
 	"os"
+
+	gpx "github.com/ptrv/go-gpx"
 )
 
 type Point struct {
-	Latitude float64 `json:"lat"`
+	Latitude  float64 `json:"lat"`
 	Longitude float64 `json:"lon"`
-	Time string `json:"time"`
+	Time      string  `json:"time"`
 }
 
 func createPoint(waypoint gpx.Wpt) Point {
 	return Point{
-		Latitude: waypoint.Lat,
+		Latitude:  waypoint.Lat,
 		Longitude: waypoint.Lon,
-		Time: waypoint.Timestamp,
+		Time:      waypoint.Timestamp,
 	}
 }
 
