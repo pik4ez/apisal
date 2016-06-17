@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0">
+	<name>Example gpx</name>
+	<wpt lat="55.749321" lon="37.608839">
+		<ele>0</ele>
+		<name>API SAL</name>
+	</wpt>
+	<trk><name>Example gpx</name><number>1</number><trkseg>
+		<trkpt lat="55.749321" lon="37.608839"><ele>0</ele><time>2007-10-14T10:09:57Z</time></trkpt>
+		<trkpt lat="55.754563" lon="37.612369"><ele>0</ele><time>2007-10-14T10:10:52Z</time></trkpt>
+		<trkpt lat="55.756935" lon="37.615224"><ele>0</ele><time>2007-10-14T10:12:39Z</time></trkpt>
+		<trkpt lat="55.758528" lon="37.618050"><ele>0</ele><time>2007-10-14T10:13:12Z</time></trkpt>
+	</trkseg></trk>
+</gpx>
