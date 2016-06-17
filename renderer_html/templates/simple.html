@@ -5,8 +5,9 @@
     </head>
     <body>
         {{range .}}
-            <h2>{{ .Title }}</h2>
-            <p>{{ .Description }}</p>
+            <h2>{{.Title}}</h2>
+            <p>{{.Description}}</p>
+            <sup>{{.Point.Lat}},{{.Point.Lon}}</sup>
             {{if .Images}}
                 <ul>
                     {{range .Images}}
