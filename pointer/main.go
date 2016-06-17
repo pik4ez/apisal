@@ -29,7 +29,8 @@ func main() {
 	flag.Parse()
 
 	if *gpxFilePath == "" {
-		fmt.Println("Use --gpx-file parameter to specify gpx file path")
+		flag.Usage()
+		// fmt.Println("Use --gpx-file parameter to specify gpx file path")
 		os.Exit(1)
 	}
 
