@@ -1,27 +1,15 @@
 package main
 
 import (
-	"os"
 	"bufio"
-	"fmt"
-	"time"
 	"encoding/json"
-	"log"
+	"fmt"
 	"io"
+	"log"
+	"os"
+
+	"github.com/pik4ez/apisal/apisal"
 )
-
-type Point struct {
-	Lat  float64 `json:"lat"`
-	Lon  float64 `json:"lon"`
-	Time time.Time `json:"time"`
-}
-
-type Object struct {
-}
-
-type WikiObject struct {
-	Title string `json:"title"`
-}
 
 func main() {
 	if os.Stdin == nil {
@@ -37,12 +25,12 @@ func main() {
 	}
 }
 
-func AllPoints(r io.Reader) ([]Point, error) {
-	var points []Point
+func AllPoints(r io.Reader) ([]apisal.Point, error) {
+	var points []apisal.Point
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
-		point := Point{}
+		point := apisal.Point{}
 		err := json.Unmarshal([]byte(scanner.Text()), &point)
 		if err != nil {
 			return nil, err
