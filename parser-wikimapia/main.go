@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"os"
-
 	lib "github.com/pik4ez/apisal/apisal"
 	"github.com/pik4ez/apisal/parser-wikimapia/mapia"
 	"io"
@@ -65,13 +64,23 @@ func PointObjects(point lib.Point) ([]lib.Object, error) {
 		if err != nil {
 			return nil, err
 		}
+		//fmt.Printf("%v", extened)
+
 		var images []lib.Image
 		if len(extened.Photos) > 0 {
 			for _, photo := range extened.Photos {
 				images = append(images, lib.Image{Url: photo.BigURL, H: 0, W: 0})
 			}
 		}
-		o := lib.Object{Point: point, Title: place.Title, Description: extened.Description, Images: images}
+
+		o := lib.Object{
+			Point: point,
+			Lat: place.Location.Lat,
+			Lon: place.Location.Lon,
+			Title: place.Title,
+			Description: extened.Description,
+			Images: images,
+		}
 
 		objects = append(objects, o)
 	}

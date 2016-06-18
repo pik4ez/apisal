@@ -40,6 +40,8 @@ type Image struct {
 type Object struct {
 	Type        string
 	Point       Point   `json:"point"`
+	Lat         float64 `json:"lat"`
+	Lon         float64 `json:"lon"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
 	Images      []Image `json:"images"`
