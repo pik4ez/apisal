@@ -15,7 +15,7 @@ const (
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "index.html")
+	http.ServeFile(w, r, "www/index.html")
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
@@ -33,7 +33,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	gpxFileName := "./tmp/" + rndString + handler.Filename
+	gpxFileName := "./www/tmp/" + rndString + handler.Filename
 
 	gpxFile, err := createFile(gpxFileName)
 	if err != nil {
@@ -47,7 +47,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	cmd := exec.Command(GPX2HTML_COMMAND, gpxFileName)
 
 	finalHtmlFileName := "/rendered/"+rndString+"stub.html"
-	finalHtml, err := createFile("." + finalHtmlFileName)
+	finalHtml, err := createFile("./www" + finalHtmlFileName)
 	if err != nil {
 		log.Println(err)
 		return
@@ -73,7 +73,7 @@ func createFile(name string) (*os.File, error) {
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", upload)
-	http.Handle("/rendered/", http.FileServer(http.Dir(".")))
+    http.Handle("/rendered/", http.FileServer(http.Dir("./www")))
 	addr := "127.0.0.1:3000"
 
 	print("http://")

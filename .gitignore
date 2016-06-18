@@ -1,4 +1,7 @@
 /.idea
 /pointer/pointer
-/www/tmp
-/www/rendered
+/parser-wikimapia/parser-wikimapia
+/renderer-html/renderer-html
+/www/www
+/www/tmp/*
+/www/rendered/*
