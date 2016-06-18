@@ -2,9 +2,9 @@ package main
 
 import (
 	lib "github.com/pik4ez/apisal/apisal"
-	"os"
 	"io"
 	"log"
+	"os"
 	"unicode/utf8"
 )
 
@@ -12,7 +12,7 @@ func main() {
 	reader := lib.NewObjectsReader(os.Stdin)
 	writer := lib.NewObjectsWriter(os.Stdout)
 	for {
-		object, err := reader.ReadNext();
+		object, err := reader.ReadNext()
 		if err == io.EOF {
 			break
 		} else if err != nil {
@@ -33,7 +33,7 @@ func main() {
 			continue
 		}
 
-		if utf8.RuneCountInString(object.Title) < 10 && !desc && !images {
+		if utf8.RuneCountInString(object.Title) < 10 && utf8.RuneCountInString(object.Description) < 128 && !images {
 			continue
 		}
 

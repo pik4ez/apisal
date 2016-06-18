@@ -1,4 +1,4 @@
-.PHONY: all pointer parser-wikimapia injector-legature filter renderer-html www
+.PHONY: all pointer parser-wikimapia injector-legature renderer-html www points objects pipeline clean
 
 all: pointer parser-wikimapia injector-legature filter renderer-html www
 
@@ -19,3 +19,26 @@ renderer-html:
 
 www:
 	go build -o ./www/www ./www/
+
+points:
+	go run ./pointer/main.go -gpx-file ./pointer/simple.gpx \
+		| tee -p /dev/tty \
+		| go run ./smooth/main.go \
+		| tee /dev/tty > ./cache/points.txt
+
+objects:
+	cat ./cache/points.txt \
+		| tee /dev/tty \
+		| go run ./parser-wikimapia/main.go \
+		| tee /dev/tty \
+		| go run ./filter/main.go > ./cahce/objects.txt
+
+render:
+	cat ./cache/objects.txt \
+		| tee /dev/tty \
+		| go run ./renderer-html/main.go > ./cache/result.html
+
+pipeline: pointers objects render
+
+clean:
+	rm -rf ./cache/*
