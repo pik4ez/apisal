@@ -12,7 +12,7 @@ import (
 const APIKey = "59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE"
 
 func main() {
-	if s, err := os.Stdin.Stat(); err != nil || s.Size() == 0 {
+	if s, err := os.Stdin.Stat(); err != nil || !(s.Mode() & os.ModeCharDevice) {
 		log.Fatal("stdin is empty!")
 	}
 
