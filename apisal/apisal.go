@@ -60,6 +60,17 @@ func ReadPoints(r io.Reader) ([]Point, error) {
 	return points, nil
 }
 
+// WritePoints writes provided points to stdout.
+func WritePoints(points []Point) {
+	for _, point := range points {
+		jsonBytes, err := json.Marshal(point)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(string(jsonBytes))
+	}
+}
+
 // ReadObjects reads all objects from stdin.
 func ReadObjects(r io.Reader) ([]Object, error) {
 	var objects []Object

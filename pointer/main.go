@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
-	"fmt"
 	"log"
 	"os"
 
@@ -13,11 +11,12 @@ import (
 	gpx "github.com/ptrv/go-gpx"
 )
 
-func createPoint(waypoint gpx.Wpt) apisal.Point {
+// NewPointByGpx creates point object by GPX point.
+func NewPointByGpx(waypoint gpx.Wpt) apisal.Point {
 	return apisal.Point{
 		Lat: waypoint.Lat,
 		Lon: waypoint.Lon,
-		// todo: use waypoint.Timestamp,
+		// TODO: use waypoint.Timestamp,
 		Time: time.Now(),
 	}
 }
@@ -28,7 +27,6 @@ func main() {
 
 	if *gpxFilePath == "" {
 		flag.Usage()
-		// fmt.Println("Use --gpx-file parameter to specify gpx file path")
 		os.Exit(1)
 	}
 
@@ -37,17 +35,15 @@ func main() {
 		log.Fatal(err)
 	}
 
+	var points []apisal.Point
 	for _, track := range route.Tracks {
 		for _, segment := range track.Segments {
 			for _, waypoint := range segment.Waypoints {
-				point := createPoint(waypoint)
-				jsonBytes, err := json.Marshal(point)
-				if err != nil {
-					log.Fatal(err)
-				}
-
-				fmt.Println(string(jsonBytes))
+				point := NewPointByGpx(waypoint)
+				points = append(points, point)
 			}
 		}
 	}
+
+	apisal.WritePoints(points)
 }
