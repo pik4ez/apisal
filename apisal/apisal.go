@@ -12,13 +12,13 @@ import (
 
 const (
 	// ObjectTypeOrganic is a type of objects parsed from external sources.
-	ObjectTypeOrganic = iota
+	ObjectTypeOrganic = "organic"
 	// ObjectTypeLegature is a type of objects added by injector to make
 	// connections between organic objects.
-	ObjectTypeLegature
-	// ObjectTypeUser is a type of objects added by user and very similar
+	ObjectTypeLegature = "legature"
+	// ObjectTypeUserdata is a type of objects added by user and very similar
 	// to organic objects by format.
-	ObjectTypeUser
+	ObjectTypeUserdata = "userdata"
 )
 
 // Point represents point.
@@ -38,7 +38,7 @@ type Image struct {
 
 // Object represents object.
 type Object struct {
-	Type        int8
+	Type        string
 	Point       Point   `json:"point"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
