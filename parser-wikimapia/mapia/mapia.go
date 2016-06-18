@@ -116,14 +116,19 @@ func (s *Mapia) GetPlaceById(id int, language string) (*MapiaPlace, error) {
 	return &place, nil
 }
 
-func (s *Mapia) GetNearbyObjects(lat, lon float64, language string) (*MapiaPlaces, error) {
+func (s *Mapia) GetNearbyObjects(lat, lon float64, count int, page int, language string) (*MapiaPlaces, error) {
+
+	if page <= 0 {
+		page = 1
+	}
 
 	raw, err := s.CallApi("place.getnearest", &MapiaParams{
 		"lat":         lat,
 		"lon":         lon,
 		"data_blocks": "location",
 		"language":    language,
-		"count":       9,
+		"count":       count,
+		"page":        page,
 	})
 
 	if err != nil {
