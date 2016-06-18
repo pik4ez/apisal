@@ -7,20 +7,18 @@ import (
 	"log"
 	"os"
 
+	"time"
+
+	"github.com/pik4ez/apisal/apisal"
 	gpx "github.com/ptrv/go-gpx"
 )
 
-type Point struct {
-	Latitude  float64 `json:"lat"`
-	Longitude float64 `json:"lon"`
-	Time      string  `json:"time"`
-}
-
-func createPoint(waypoint gpx.Wpt) Point {
-	return Point{
-		Latitude:  waypoint.Lat,
-		Longitude: waypoint.Lon,
-		Time:      waypoint.Timestamp,
+func createPoint(waypoint gpx.Wpt) apisal.Point {
+	return apisal.Point{
+		Lat: waypoint.Lat,
+		Lon: waypoint.Lon,
+		// todo: use waypoint.Timestamp,
+		Time: time.Now(),
 	}
 }
 
