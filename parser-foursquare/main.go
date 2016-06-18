@@ -44,7 +44,11 @@ func VenuesExplore(point apisal.Point) ([]apisal.Object, error) {
 	}
 	for _, v := range res.GetVenues() {
 		fmt.Println(v.Tips)
-		o := apisal.Object{Point: point, Title: v.Name}
+		o := apisal.Object{
+			Type:  apisal.ObjectTypeOrganic,
+			Point: point,
+			Title: v.Name,
+		}
 		objects = append(objects, o)
 	}
 	return objects, nil

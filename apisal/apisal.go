@@ -30,7 +30,7 @@ type Point struct {
 
 // Image represents image.
 type Image struct {
-	Url   string `json:"url"`
+	URL   string `json:"url"`
 	W     int    `json:"w"`
 	H     int    `json:"h"`
 	Title string `json:"title"`
@@ -78,7 +78,7 @@ func (rw *PointsReader) ReadNext() (Point, error) {
 	return Point{}, io.EOF
 }
 
-func (rw *PointsWriter) Write(p Point) (error) {
+func (rw *PointsWriter) Write(p Point) error {
 	bytes, err := json.Marshal(p)
 	if err != nil {
 		return err
@@ -102,7 +102,7 @@ func NewObjectsWriter(w io.Writer) ObjectsWriter {
 	}
 }
 
-func (ow *ObjectsWriter) WriteObject(o Object) (error) {
+func (ow *ObjectsWriter) WriteObject(o Object) error {
 	bytes, err := json.Marshal(o)
 	if err != nil {
 		return err
@@ -137,10 +137,6 @@ func (r *ObjectsReader) ReadNext() (Object, error) {
 	}
 	return Object{}, io.EOF
 }
-
-
-
-
 
 // ReadPoints returns a list of points from stdin.
 // deprecated

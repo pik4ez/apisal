@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const MAPIA_API_URL = "http://api.wikimapia.org/"
+const MapiaAPIURL = "http://api.wikimapia.org/"
 
 type Mapia struct {
 	ApiKey string
@@ -40,7 +40,7 @@ type MapiaPlaceSummary struct {
 		West  float64 `json:"west"`
 	} `json:"location"`
 	Title   string `json:"title"`
-	Urlhtml string `json:"urlhtml"`
+	URLHTML string `json:"urlhtml"`
 }
 
 type MapiaPlace struct {
@@ -79,7 +79,7 @@ type MapiaPlace struct {
 		Title string `json:"title"`
 	} `json:"tags"`
 	Title   string `json:"title"`
-	Urlhtml string `json:"urlhtml"`
+	URLHTML string `json:"urlhtml"`
 	X       string `json:"x"`
 	Y       string `json:"y"`
 }
@@ -95,7 +95,7 @@ func NewMapia(apiKey string) *Mapia {
 
 func (s *Mapia) GetPlaceById(id int, language string) (*MapiaPlace, error) {
 
-	raw, err := s.CallApi("place.getbyid", &MapiaParams{
+	raw, err := s.CallAPI("place.getbyid", &MapiaParams{
 		"id":          id,
 		"data_blocks": "main,photos,comments",
 		"language":    language,
@@ -122,7 +122,7 @@ func (s *Mapia) GetNearbyObjects(lat, lon float64, count int, page int, language
 		page = 1
 	}
 
-	raw, err := s.CallApi("place.getnearest", &MapiaParams{
+	raw, err := s.CallAPI("place.getnearest", &MapiaParams{
 		"lat":         lat,
 		"lon":         lon,
 		"data_blocks": "location",
@@ -144,9 +144,9 @@ func (s *Mapia) GetNearbyObjects(lat, lon float64, count int, page int, language
 	return &places, nil
 }
 
-func (s *Mapia) CallApi(method string, params *MapiaParams) (string, error) {
+func (s *Mapia) CallAPI(method string, params *MapiaParams) (string, error) {
 
-	url, err := url.Parse(fmt.Sprintf("%s", MAPIA_API_URL))
+	url, err := url.Parse(fmt.Sprintf("%s", MapiaAPIURL))
 
 	if err != nil {
 		panic(err)

@@ -1,7 +1,10 @@
 /.idea
 /pointer/pointer
+/parser-foursquare/parser-foursquare
 /parser-wikimapia/parser-wikimapia
+/injector-legature/injector-legature
+/injector-user/injector-user
+/filter/filter
 /renderer-html/renderer-html
+/renderer-xml/renderer-xml
 /www/www
-/www/tmp/*
-/www/rendered/*

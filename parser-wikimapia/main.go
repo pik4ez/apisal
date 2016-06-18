@@ -1,24 +1,25 @@
 package main
 
 import (
+	"io"
 	"log"
 	"os"
+
 	lib "github.com/pik4ez/apisal/apisal"
 	"github.com/pik4ez/apisal/parser-wikimapia/mapia"
-	"io"
 )
 
 // APIKey contains a key to wikimapia API.
 const APIKey = "59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE"
 
-var usedWikiObjects = make(map[int]bool);
+var usedWikiObjects = make(map[int]bool)
 
 func mockObjects(p lib.Point) ([]lib.Object, error) {
 	return []lib.Object{{}, {}, {}}, nil
 }
 
 func main() {
-	if s, err := os.Stdin.Stat(); err != nil || (s.Mode() & os.ModeCharDevice) != 0 {
+	if s, err := os.Stdin.Stat(); err != nil || (s.Mode()&os.ModeCharDevice) != 0 {
 		log.Fatal("stdin is empty!")
 	}
 
@@ -69,17 +70,17 @@ func PointObjects(point lib.Point) ([]lib.Object, error) {
 		var images []lib.Image
 		if len(extened.Photos) > 0 {
 			for _, photo := range extened.Photos {
-				images = append(images, lib.Image{Url: photo.BigURL, H: 0, W: 0})
+				images = append(images, lib.Image{URL: photo.BigURL, H: 0, W: 0})
 			}
 		}
-
 		o := lib.Object{
-			Point: point,
-			Lat: place.Location.Lat,
-			Lon: place.Location.Lon,
-			Title: place.Title,
+			Type:        lib.ObjectTypeOrganic,
+			Point:       point,
+			Lat:         place.Location.Lat,
+			Lon:         place.Location.Lon,
+			Title:       place.Title,
 			Description: extened.Description,
-			Images: images,
+			Images:      images,
 		}
 
 		objects = append(objects, o)

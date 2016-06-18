@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+
 	"github.com/jmcvetta/randutil"
 )
 
@@ -46,15 +47,15 @@ func upload(w http.ResponseWriter, r *http.Request) {
 
 	cmd := exec.Command(GPX2HTML_COMMAND, gpxFileName)
 
-	finalHtmlFileName := "/rendered/"+rndString+"stub.html"
-	finalHtml, err := createFile("./www" + finalHtmlFileName)
+	finalHTMLFileName := "/rendered/" + rndString + "stub.html"
+	finalHTML, err := createFile("./www" + finalHTMLFileName)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	defer finalHtml.Close()
+	defer finalHTML.Close()
 
-	cmd.Stdout = finalHtml
+	cmd.Stdout = finalHTML
 
 	err = cmd.Start()
 	if err != nil {
@@ -63,7 +64,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	}
 	cmd.Wait()
 
-	http.Redirect(w, r, finalHtmlFileName, 301)
+	http.Redirect(w, r, finalHTMLFileName, 301)
 }
 
 func createFile(name string) (*os.File, error) {
@@ -73,7 +74,7 @@ func createFile(name string) (*os.File, error) {
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", upload)
-    http.Handle("/rendered/", http.FileServer(http.Dir("./www")))
+	http.Handle("/rendered/", http.FileServer(http.Dir("./www")))
 	addr := "127.0.0.1:3000"
 
 	print("http://")
