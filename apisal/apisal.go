@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"os"
 	"time"
 )
 
@@ -56,7 +55,7 @@ type PointsWriter struct {
 
 func NewPointsReader(r io.Reader) *PointsReader {
 	return &PointsReader{
-		scanner: bufio.NewScanner(os.Stdin),
+		scanner: bufio.NewScanner(r),
 	}
 }
 func NewPointsWriter(w io.Writer) *PointsWriter {

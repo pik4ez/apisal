@@ -7,7 +7,6 @@ import (
 	lib "github.com/pik4ez/apisal/apisal"
 	"flag"
 	"io"
-	"fmt"
 )
 
 func main() {
@@ -21,18 +20,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Printf("1")
 	objects, err := loadObjects(*oFilename)
-	for _, object := range objects {
-		fmt.Printf("%v", object)
-	}
-	
-	fmt.Printf("2")
 	points, err := loadPoints(*pFilename)
-	for _, point := range points {
-		fmt.Printf("%v", point)
-	}
-	fmt.Printf("3")
 
 	context := struct {
 		Points  []lib.Point
@@ -42,16 +31,11 @@ func main() {
 		objects,
 	}
 
-	fmt.Printf("4")
-
 	template := template.Must(template.ParseFiles(*tFilename))
-	fmt.Printf("5")
 	err = template.Execute(os.Stdout, context)
-	fmt.Printf("6")
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("7")
 }
 
 func loadPoints(filename string) ([]lib.Point, error) {
@@ -69,7 +53,6 @@ func loadPoints(filename string) ([]lib.Point, error) {
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Printf("%v", point.Lat)
 		points = append(points, point)
 	}
 
@@ -91,7 +74,6 @@ func loadObjects(filename string) ([]lib.Object, error) {
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		//fmt.Printf("%v", object.Title)
 		objects = append(objects, object)
 	}
 
