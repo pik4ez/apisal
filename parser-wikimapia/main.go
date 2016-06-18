@@ -75,7 +75,7 @@ func PointObjects(point lib.Point) ([]lib.Object, error) {
 		if err != nil {
 			return nil, err
 		}
-		var images []lib.Image
+		images := make([]lib.Image, 0)
 		if len(extened.Photos) > 0 {
 			for _, photo := range extened.Photos {
 				images = append(images, lib.Image{Url: photo.BigURL, H: 0, W: 0})
