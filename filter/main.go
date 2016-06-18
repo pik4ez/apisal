@@ -24,11 +24,15 @@ func main() {
 			continue
 		}
 
-		title := len(object.Title) > 0
-		desc := len(object.Description) > 0
+		title := utf8.RuneCountInString(object.Title) > 0
+		desc := utf8.RuneCountInString(object.Description) > 0
 		images := len(object.Images) > 0
 
-		//fmt.Println(title, desc, images)
+		// fmt.Println(title, desc, images)
+		
+		if !title || !desc || !images {
+			continue
+		}
 
 		if !title {
 			continue

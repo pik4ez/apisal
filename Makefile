@@ -1,6 +1,6 @@
-.PHONY: all pointer parser-wikimapia injector-legature renderer-html www points objects pipeline clean
+.PHONY: all pointer parser-wikimapia injector-legature renderer-html www points objects pipeline clean filter
 
-all: pointer parser-wikimapia injector-legature filter renderer-html www
+all: pointer parser-wikimapia injector-legature filter renderer-html www filter
 
 pointer:
 	go build -o ./pointer/pointer ./pointer/
@@ -36,7 +36,8 @@ objects:
 render:
 	cat ./cache/objects.txt \
 		| tee -p /dev/tty \
-		| go run ./renderer-html/main.go ./cache/objects.txt ./cache/points.txt > ./cache/result.html
+		| go run ./renderer-html/main.go -o ./cache/objects.txt -p ./cache/points.txt \
+			-t ./renderer-html/templates/simple.html > ./cache/result.html
 	@echo
 	@echo "file://"$(realpath ./cache/result.html)
 

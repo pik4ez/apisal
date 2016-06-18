@@ -17,16 +17,14 @@ type GeoCoder struct {
 	client *maps.Client
 }
 
+const apiKey = "AIzaSyCoTE7DPJAOPjauBDHeulN49M5aLc4QijY"
+
 func main() {
-	googleMapsAPIKey := os.Getenv("GOOGLE_MAPS_API_KEY")
-	if googleMapsAPIKey == "" {
-		log.Fatal("GOOGLE_MAPS_API_KEY environment variable must be set")
-	}
-	geocoder, err := NewGeoCoder(googleMapsAPIKey)
+	geocoder, err := NewGeoCoder(apiKey)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if s, err := os.Stdin.Stat(); err != nil || (s.Mode()&os.ModeCharDevice) != 0 {
+	if s, err := os.Stdin.Stat(); err != nil || (s.Mode() & os.ModeCharDevice) != 0 {
 		log.Fatal("stdin is empty!")
 	}
 
