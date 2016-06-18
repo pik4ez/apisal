@@ -1,11 +1,12 @@
 package main
 
 import (
-	lib "github.com/pik4ez/apisal/apisal"
 	"io"
 	"log"
 	"os"
 	"unicode/utf8"
+
+	lib "github.com/pik4ez/apisal/apisal"
 )
 
 func main() {
@@ -29,7 +30,7 @@ func main() {
 		images := len(object.Images) > 0
 
 		// fmt.Println(title, desc, images)
-		
+
 		if !title || !desc || !images {
 			continue
 		}

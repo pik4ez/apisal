@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if s, err := os.Stdin.Stat(); err != nil || (s.Mode() & os.ModeCharDevice) != 0 {
+	if s, err := os.Stdin.Stat(); err != nil || (s.Mode()&os.ModeCharDevice) != 0 {
 		log.Fatal("stdin is empty!")
 	}
 

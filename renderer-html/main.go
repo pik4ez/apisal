@@ -1,12 +1,13 @@
 package main
 
 import (
+	"flag"
 	"html/template"
+	"io"
 	"log"
 	"os"
+
 	lib "github.com/pik4ez/apisal/apisal"
-	"flag"
-	"io"
 )
 
 func main() {
