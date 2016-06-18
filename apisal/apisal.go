@@ -51,7 +51,7 @@ type PointsReader struct {
 	scanner *bufio.Scanner
 }
 type PointsWriter struct {
-	writer  io.Writer
+	writer io.Writer
 }
 
 func NewPointsReader(r io.Reader) *PointsReader {
@@ -115,7 +115,6 @@ func (ow *ObjectsWriter) WriteObject(o Object) (error) {
 	}
 	return nil
 }
-
 
 type ObjectsReader struct {
 	scanner *bufio.Scanner

@@ -23,6 +23,8 @@ func main() {
 		desc := len(object.Description) > 0
 		images := len(object.Images) > 0
 
+		//fmt.Println(title, desc, images)
+
 		if !title {
 			continue
 		}
