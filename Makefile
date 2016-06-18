@@ -40,7 +40,7 @@ render:
 	@echo
 	@echo "file://"$(realpath ./cache/result.html)
 
-pipeline: pointers objects render
+pipeline: points objects render
 
 clean:
 	rm -rf ./cache/*
