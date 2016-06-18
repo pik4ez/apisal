@@ -1,14 +1,14 @@
 package main
 
 import (
-	"os"
 	"bufio"
 	"encoding/json"
-	"log"
 	"io"
+	"log"
+	"os"
+
 	lib "github.com/pik4ez/apisal/apisal"
 	"github.com/pik4ez/apisal/parser-wikimapia/mapia"
-	"fmt"
 )
 
 const API_KEY = "59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE"
@@ -33,13 +33,7 @@ func main() {
 		}
 	}
 
-	for _, object := range objects {
-		str, err := json.Marshal(object)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(string(str))
-	}
+	lib.WriteObjects(objects)
 }
 
 func AllPoints(r io.Reader) ([]lib.Point, error) {

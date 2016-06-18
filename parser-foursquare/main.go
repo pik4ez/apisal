@@ -1,10 +1,7 @@
 package main
 
 import (
-	"bufio"
-	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"os"
 
@@ -18,7 +15,7 @@ func main() {
 		log.Fatal("stdin is empty!")
 	}
 
-	points, err := ReadPoints(os.Stdin)
+	points, err := apisal.ReadPoints(os.Stdin)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -32,28 +29,7 @@ func main() {
 		}
 	}
 
-	for _, object := range objects {
-		str, err := json.Marshal(object)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(string(str))
-	}
-}
-
-// ReadPoints returns a list of points from stdin.
-func ReadPoints(r io.Reader) ([]apisal.Point, error) {
-	var points []apisal.Point
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		point := apisal.Point{}
-		err := json.Unmarshal([]byte(scanner.Text()), &point)
-		if err != nil {
-			return nil, err
-		}
-		points = append(points, point)
-	}
-	return points, nil
+	apisal.WriteObjects(objects)
 }
 
 // VenuesExplore returns venues near the specified location.
