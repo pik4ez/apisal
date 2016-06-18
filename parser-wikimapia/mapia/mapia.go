@@ -107,7 +107,7 @@ func (s *Mapia) GetPlaceById(id int, language string) (*MapiaPlace, error) {
 
 	var place MapiaPlace
 
-	fmt.Println(raw)
+	// fmt.Println(raw)
 
 	if err := json.Unmarshal([]byte(raw), &place); err != nil {
 		return nil, err

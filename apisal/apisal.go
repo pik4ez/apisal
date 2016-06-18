@@ -11,18 +11,18 @@ type Point struct {
 
 // Image represents image.
 type Image struct {
-	Url   string
-	W     int
-	H     int
-	Title string
+	Url   string `json:"url"`
+	W     int    `json:"w"`
+	H     int    `json:"h"`
+	Title string `json:"title"`
 }
 
 // Object represents object.
 type Object struct {
-	Point       Point
-	Title       string
-	Description string
-	Images      []Image
+	Point       Point   `json:"point"`
+	Title       string  `json:"title"`
+	Description string  `json:"description"`
+	Images      []Image `json:"images"`
 }
 
 // WikiObject
