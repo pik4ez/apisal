@@ -66,8 +66,7 @@ func NewPointsWriter(w io.Writer) *PointsWriter {
 }
 
 func (rw *PointsReader) ReadNext() (Point, error) {
-	scan := rw.scanner.Scan()
-	if scan {
+	if rw.scanner.Scan() {
 		point := Point{}
 		err := json.Unmarshal([]byte(rw.scanner.Bytes()), &point)
 		if err != nil {

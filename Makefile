@@ -36,7 +36,7 @@ objects:
 render:
 	cat ./cache/objects.txt \
 		| tee -p /dev/tty \
-		| go run ./renderer-html/main.go > ./cache/result.html
+		| go run ./renderer-html/main.go ./cache/objects.txt ./cache/points.txt > ./cache/result.html
 	@echo
 	@echo "file://"$(realpath ./cache/result.html)
 
