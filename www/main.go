@@ -74,6 +74,9 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", upload)
 	http.Handle("/rendered/", http.FileServer(http.Dir(".")))
+	addr := "127.0.0.1:3000"
 
-	http.ListenAndServe("127.0.0.1:3000", nil)
+	print("http://")
+	println(addr)
+	http.ListenAndServe(addr, nil)
 }

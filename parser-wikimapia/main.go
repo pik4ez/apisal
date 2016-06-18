@@ -10,6 +10,7 @@ import (
 
 // APIKey contains a key to wikimapia API.
 const APIKey = "59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE"
+var usedWikiObjects = make(map[string]bool);
 
 func main() {
 	if s, err := os.Stdin.Stat(); err != nil || !(s.Mode() & os.ModeCharDevice) {
@@ -45,6 +46,11 @@ func PointObjects(point lib.Point) ([]lib.Object, error) {
 	}
 
 	for _, place := range places.Places {
+		if _, ok := usedWikiObjects[place.ID]; ok {
+			continue
+		}
+		usedWikiObjects[place.ID] = true
+
 		extened, err := m.GetPlaceById(place.ID, "ru")
 		if err != nil {
 			return nil, err
