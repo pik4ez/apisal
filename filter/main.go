@@ -19,6 +19,11 @@ func main() {
 			log.Fatal(err)
 		}
 
+		if object.Type != lib.ObjectTypeOrganic {
+			writer.WriteObject(object)
+			continue
+		}
+
 		title := len(object.Title) > 0
 		desc := len(object.Description) > 0
 		images := len(object.Images) > 0

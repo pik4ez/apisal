@@ -28,15 +28,17 @@ points:
 
 objects:
 	cat ./cache/points.txt \
-		| tee /dev/tty \
+		| tee -p /dev/tty \
 		| go run ./parser-wikimapia/main.go \
-		| tee /dev/tty \
-		| go run ./filter/main.go > ./cahce/objects.txt
+		| tee -p /dev/tty \
+		| go run ./filter/main.go > ./cache/objects.txt
 
 render:
 	cat ./cache/objects.txt \
-		| tee /dev/tty \
+		| tee -p /dev/tty \
 		| go run ./renderer-html/main.go > ./cache/result.html
+	@echo
+	@echo "file://"$(realpath ./cache/result.html)
 
 pipeline: pointers objects render
 
