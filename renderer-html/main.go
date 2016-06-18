@@ -22,5 +22,8 @@ func main() {
 		log.Fatal(err)
 	}
 	t := template.Must(template.ParseFiles(filepath.Join(cwd, "./renderer-html/templates/simple.html")))
-	t.Execute(os.Stdout, objs)
+	err = t.Execute(os.Stdout, objs)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

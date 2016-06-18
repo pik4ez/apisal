@@ -119,9 +119,9 @@ type ObjectsReader struct {
 	scanner *bufio.Scanner
 }
 
-func NewObjectsReader(w io.Writer) ObjectsReader {
+func NewObjectsReader(r io.Reader) *ObjectsReader {
 	return &ObjectsReader{
-		scanner: bufio.NewScanner(os.Stdin),
+		scanner: bufio.NewScanner(r),
 	}
 }
 
@@ -145,7 +145,7 @@ func (r *ObjectsReader) ReadNext() (Object, error) {
 // deprecated
 func ReadPoints(r io.Reader) ([]Point, error) {
 	var points []Point
-	scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
 		point := Point{}
 		err := json.Unmarshal([]byte(scanner.Text()), &point)
@@ -172,7 +172,7 @@ func WritePoints(points []Point) {
 // deprecated
 func ReadObjects(r io.Reader) ([]Object, error) {
 	var objects []Object
-	scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
 		object := Object{}
 		err := json.Unmarshal([]byte(scanner.Text()), &object)

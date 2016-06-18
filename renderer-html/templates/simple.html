@@ -23,13 +23,12 @@
     var map;
     DG.then(function () {
         map = DG.map('map', {
-            center: [{{.AvgPoint.Lat}}, {{.AvgPoint.Lon}}],
             zoom: 6,
             scrollWheelZoom: false
         });
 
         var latlngs = [
-        {{range .Objects}}
+        {{range . }}
             [{{.Point.Lat}},{{.Point.Lon}}],
         {{end}}
         ];
@@ -47,7 +46,7 @@
 </div-->
 
 
-{{range .Objects}}
+{{range . }}
 <div class="pure-g">
     <div class="pure-u-1-24 pure-u-lg-2-24"></div>
     <div class="pure-u-22-24 pure-u-lg-20-24">
