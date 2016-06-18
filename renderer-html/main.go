@@ -20,12 +20,28 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	avgPoint, counter := apisal.Point{}, 0
+	for _, object := range objs {
+		avgPoint.Lat += object.Point.Lat
+		avgPoint.Lon += object.Point.Lon
+		counter += 1
+	}
+	avgPoint.Lat = avgPoint.Lat / float64(counter)
+	avgPoint.Lon = avgPoint.Lon / float64(counter)
+
 	cwd, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
 	t := template.Must(template.ParseFiles(filepath.Join(cwd, "./renderer-html/templates/simple.html")))
-	t.Execute(os.Stdout, objs)
+	data := struct {
+		AvgPoint apisal.Point
+		Objects []apisal.Object
+	} {
+		avgPoint,
+		objs,
+	}
+	t.Execute(os.Stdout, data)
 }
 
 // ReadObjects reads all objects from stdin.
