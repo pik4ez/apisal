@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>АПИ Сал вам аписал</title>
+        <meta charset="utf-8" />
     </head>
     <body>
         {{range .}}
@@ -11,7 +12,7 @@
             {{if .Images}}
                 <ul>
                     {{range .Images}}
-                        <li><img src="{{.Url}}" width="{{.W}}" height="{{.H}}" title="{{.Title}}" /></li>
+                        <li><img src="{{.Url}}" title="{{.Title}}" /></li>
                     {{end}}
                 </ul>
             {{end}}

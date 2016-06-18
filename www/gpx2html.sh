@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-#pointer -gpx-file $1 | parser | merger | render
-cat stub.html
+go run pointer/main.go -gpx-file $1 | go run parser-wikimapia/main.go | go run renderer-html

@@ -23,8 +23,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(points)
 
-	var venues, err = VenuesExplore()
+	venues, err := VenuesExplore()
 	if err != nil {
 		log.Fatal(err)
 	}
