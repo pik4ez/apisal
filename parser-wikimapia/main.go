@@ -7,8 +7,7 @@ import (
 	"log"
 	"io"
 	lib "github.com/pik4ez/apisal/apisal"
-	//"fmt"
-	mapia "./mapia"
+	mapia "github.com/pik4ez/apisal/parser-wikimapia/mapia"
 	"fmt"
 )
 
