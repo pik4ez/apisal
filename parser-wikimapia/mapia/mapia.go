@@ -1,4 +1,4 @@
-package mapi
+package mapia
 
 import (
 	"encoding/json"
