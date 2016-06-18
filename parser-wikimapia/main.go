@@ -6,33 +6,43 @@ import (
 
 	lib "github.com/pik4ez/apisal/apisal"
 	"github.com/pik4ez/apisal/parser-wikimapia/mapia"
+	"io"
 )
 
 // APIKey contains a key to wikimapia API.
 const APIKey = "59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE"
+
 var usedWikiObjects = make(map[int]bool);
+
+func mockObjects(p lib.Point) ([]lib.Object, error) {
+	return []lib.Object{{}, {}, {}}, nil
+}
 
 func main() {
 	if s, err := os.Stdin.Stat(); err != nil || (s.Mode() & os.ModeCharDevice) != 0 {
 		log.Fatal("stdin is empty!")
 	}
 
-	points, err := lib.ReadPoints(os.Stdin)
-	if err != nil {
-		log.Fatal(err)
-	}
+	pointsReader := lib.NewPointsReader(os.Stdin)
+	objectsWriter := lib.NewObjectsWriter(os.Stdout)
 
-	objects := make([]lib.Object, 0, 100)
-	for _, point := range points {
-		if pointObjects, err := PointObjects(point); err == nil {
-			objects = append(objects, pointObjects...)
-			// fmt.Println(pointObjects)
-		} else {
+	for {
+		point, err := pointsReader.ReadNext()
+		if err == io.EOF {
+			break
+		} else if err != nil {
 			log.Fatal(err)
 		}
-	}
 
-	lib.WriteObjects(objects)
+		pointObjects, err := PointObjects(point)
+		//pointObjects, err := mockObjects(point)
+		if err != nil {
+			log.Fatal(err)
+		}
+		for _, object := range pointObjects {
+			objectsWriter.WriteObject(object)
+		}
+	}
 }
 
 // PointObjects returns a list of objects by points from wikimapia.

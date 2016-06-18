@@ -45,7 +45,104 @@ type Object struct {
 	Images      []Image `json:"images"`
 }
 
+type PointsReader struct {
+	scanner *bufio.Scanner
+}
+type PointsWriter struct {
+	writer  io.Writer
+}
+
+func NewPointsReader(r io.Reader) *PointsReader {
+	return &PointsReader{
+		scanner: bufio.NewScanner(os.Stdin),
+	}
+}
+func NewPointsWriter(w io.Writer) *PointsWriter {
+	return &PointsWriter{
+		writer: w,
+	}
+}
+
+func (rw *PointsReader) ReadNext() (Point, error) {
+	scan := rw.scanner.Scan()
+	if scan {
+		point := Point{}
+		err := json.Unmarshal([]byte(rw.scanner.Bytes()), &point)
+		if err != nil {
+			return Point{}, io.EOF
+		}
+		return point, nil
+	}
+	return Point{}, io.EOF
+}
+
+func (rw *PointsWriter) Write(p Point) (error) {
+	bytes, err := json.Marshal(p)
+	if err != nil {
+		return err
+	}
+	if _, err := rw.writer.Write(bytes); err != nil {
+		return err
+	}
+	if _, err := rw.writer.Write([]byte("\n")); err != nil {
+		return err
+	}
+	return nil
+}
+
+type ObjectsWriter struct {
+	writer io.Writer
+}
+
+func NewObjectsWriter(w io.Writer) ObjectsWriter {
+	return ObjectsWriter{
+		writer: w,
+	}
+}
+
+func (ow *ObjectsWriter) WriteObject(o Object) (error) {
+	bytes, err := json.Marshal(o)
+	if err != nil {
+		return err
+	}
+	if _, err := ow.writer.Write(bytes); err != nil {
+		return err
+	}
+	if _, err := ow.writer.Write([]byte("\n")); err != nil {
+		return err
+	}
+	return nil
+}
+
+
+type ObjectsReader struct {
+	scanner *bufio.Scanner
+}
+
+func NewObjectsReader(w io.Writer) ObjectsReader {
+	return &ObjectsReader{
+		scanner: bufio.NewScanner(os.Stdin),
+	}
+}
+
+func (r *ObjectsReader) ReadNext() (Object, error) {
+	if r.scanner.Scan() {
+		object := Object{}
+		err := json.Unmarshal([]byte(r.scanner.Bytes()), &object)
+		if err != nil {
+			return Object{}, io.EOF
+		}
+		return object, nil
+	}
+	return Object{}, io.EOF
+}
+
+
+
+
+
 // ReadPoints returns a list of points from stdin.
+// deprecated
 func ReadPoints(r io.Reader) ([]Point, error) {
 	var points []Point
 	scanner := bufio.NewScanner(os.Stdin)
@@ -72,6 +169,7 @@ func WritePoints(points []Point) {
 }
 
 // ReadObjects reads all objects from stdin.
+// deprecated
 func ReadObjects(r io.Reader) ([]Object, error) {
 	var objects []Object
 	scanner := bufio.NewScanner(os.Stdin)

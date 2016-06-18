@@ -35,15 +35,19 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var points []apisal.Point
+	pointsWriter := apisal.NewPointsWriter(os.Stdout)
+	//var points []apisal.Point
 	for _, track := range route.Tracks {
 		for _, segment := range track.Segments {
 			for _, waypoint := range segment.Waypoints {
 				point := NewPointByGpx(waypoint)
-				points = append(points, point)
+				if err := pointsWriter.Write(point); err != nil {
+					log.Fatal(err)
+				}
+				//points = append(points, point)
 			}
 		}
 	}
 
-	apisal.WritePoints(points)
+	//apisal.WritePoints(points)
 }
