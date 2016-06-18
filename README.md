@@ -20,7 +20,8 @@ Pointer перегоняет трэк из инородного формата (
 Запуск АПИ Сал для формирования отчёта в виде html из gpx-трэка:
 
 ```
-git clone apisal.git
+git clone https://github.com/pik4ez/apisal.git
 cd apisal
-go run pointer/main.go -gpx-file pointer/simple.gpx | go run parser-wikimapia/main.go | go run renderer-html/main.go > result.html
+make
+./run.sh
 ```
