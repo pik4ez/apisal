@@ -1,18 +1,19 @@
 package main
 
 import (
-	"text/template"
+	"flag"
+	"fmt"
+	"io"
 	"log"
 	"os"
-	lib "github.com/pik4ez/apisal/apisal"
-	"flag"
-	"io"
 	"strings"
-	"fmt"
+	"text/template"
+
+	lib "github.com/pik4ez/apisal/apisal"
 )
 
 type TplObject struct {
-	Object lib.Object
+	Object   lib.Object
 	Ligature bool
 }
 
@@ -52,7 +53,6 @@ func main() {
 		points,
 		tplObjects,
 	}
-
 
 	template := template.Must(template.ParseFiles(*tFilename))
 	err = template.Execute(os.Stdout, context)

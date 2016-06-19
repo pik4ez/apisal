@@ -3,22 +3,32 @@ package main
 import (
 	"io"
 	"log"
+	"math/rand"
 	"os"
+
+	"time"
 
 	lib "github.com/pik4ez/apisal/apisal"
 	"github.com/pik4ez/apisal/parser-wikimapia/mapia"
 )
 
-// APIKey contains a key to wikimapia API.
-const APIKey = "59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE"
-
 var usedWikiObjects = make(map[int]bool)
 
-func mockObjects(p lib.Point) ([]lib.Object, error) {
-	return []lib.Object{{}, {}, {}}, nil
+// APIKeys contain a keys to wikimapia API.
+var APIKeys = [...]string{
+	"4599919F-BCFC13DC-577E3FA9-80FBD3BF-31DD56BF-D49033F8-AA3E31C5-4CD23144",
+	"59F5F0FD-B38A4635-6BC3D0EF-307471CE-7246D42E-A54DC82A-BB2A27C6-9A0FD0BE",
+	"F99FD50C-3926D677-8DF5BC36-0C3E1FFE-1A740EE5-D8B8C3F6-B09FEC2C-F2068243",
+}
+
+func getRandomAPIKey() string {
+	rand.Seed(time.Now().UTC().UnixNano())
+	return APIKeys[rand.Intn(len(APIKeys))]
 }
 
 func main() {
+	apiKey := getRandomAPIKey()
+
 	if s, err := os.Stdin.Stat(); err != nil || (s.Mode()&os.ModeCharDevice) != 0 {
 		log.Fatal("stdin is empty!")
 	}
@@ -34,8 +44,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		pointObjects, err := PointObjects(point)
-		//pointObjects, err := mockObjects(point)
+		pointObjects, err := PointObjects(point, apiKey)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -46,10 +55,10 @@ func main() {
 }
 
 // PointObjects returns a list of objects by points from wikimapia.
-func PointObjects(point lib.Point) ([]lib.Object, error) {
+func PointObjects(point lib.Point, apiKey string) ([]lib.Object, error) {
 	var objects []lib.Object
 
-	m := mapia.NewMapia(APIKey)
+	m := mapia.NewMapia(apiKey)
 	places, err := m.GetNearbyObjects(point.Lat, point.Lon, 30, 1, "ru")
 	if err != nil {
 		return nil, err
