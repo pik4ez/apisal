@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd" creator="Bike Route Toaster http://bikeroutetoaster.com/" version="1.0">
+  <author>BikeRouteToaster.com</author>
+  <trk>
+    <name>pripat</name>
+    <trkseg>
+      <trkpt lat="51.40547" lon="30.04589">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>0</course>
+        <speed>0</speed>
+      </trkpt>
+      <trkpt lat="51.40762" lon="30.05224">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>241.510131518402</course>
+        <speed>0</speed>
+      </trkpt>
+      <trkpt lat="51.40472" lon="30.05052">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>20.3025528493528</course>
+        <speed>0</speed>
+      </trkpt>
+      <trkpt lat="51.40515" lon="30.05825">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>264.9072431595</course>
+        <speed>0</speed>
+      </trkpt>
+      <trkpt lat="51.40301" lon="30.06099">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>321.385734376576</course>
+        <speed>0</speed>
+      </trkpt>
+      <trkpt lat="51.39958" lon="30.06477">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>325.492124875533</course>
+        <speed>0</speed>
+      </trkpt>
+      <trkpt lat="51.39551" lon="30.06958">
+        <ele>0</ele>
+        <time>2016-06-19T08:53:00Z</time>
+        <course>323.598604206759</course>
+        <speed>0</speed>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
