@@ -1,14 +1,24 @@
 package main
 
 import (
-	lib "github.com/pik4ez/apisal/apisal"
+	"flag"
 	"io"
 	"log"
 	"os"
 	"unicode/utf8"
+
+	lib "github.com/pik4ez/apisal/apisal"
 )
 
 func main() {
+	var photosMin int
+	var descrLenMin int
+	var titleLenMin int
+	flag.IntVar(&photosMin, "p", 0, "Minimum photos per object")
+	flag.IntVar(&titleLenMin, "t", 10, "Minimum title length")
+	flag.IntVar(&descrLenMin, "d", 128, "Minimum description length")
+	flag.Parse()
+
 	reader := lib.NewObjectsReader(os.Stdin)
 	writer := lib.NewObjectsWriter(os.Stdout)
 	for {
@@ -24,25 +34,21 @@ func main() {
 			continue
 		}
 
-		title := utf8.RuneCountInString(object.Title) > 0
-		desc := utf8.RuneCountInString(object.Description) > 0
-		images := len(object.Images) > 0
+		titleLen := utf8.RuneCountInString(object.Title) > 0
+		descLen := utf8.RuneCountInString(object.Description) > 0
+		imagesCount := len(object.Images)
+		imagesExist := imagesCount > 0
 
-		// fmt.Println(title, desc, images)
-		
-		if !title || !desc || !images {
+		if !titleLen || !descLen || !imagesExist {
 			continue
 		}
-
-		if !title {
+		if imagesCount < photosMin {
 			continue
 		}
-
-		if !desc && !images {
+		if utf8.RuneCountInString(object.Title) < titleLenMin {
 			continue
 		}
-
-		if utf8.RuneCountInString(object.Title) < 10 && utf8.RuneCountInString(object.Description) < 128 && !images {
+		if utf8.RuneCountInString(object.Description) < descrLenMin {
 			continue
 		}
 

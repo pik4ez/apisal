@@ -47,7 +47,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 
 	cmd := exec.Command(GPX2HTML_COMMAND, gpxFileName)
 
-	finalHTMLFileName := "/rendered/" + rndString + "stub.html"
+	finalHTMLFileName := "/rendered/" + rndString + ".html"
 	finalHTML, err := createFile("./www" + finalHTMLFileName)
 	if err != nil {
 		log.Println(err)
@@ -75,6 +75,7 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/upload", upload)
 	http.Handle("/rendered/", http.FileServer(http.Dir("./www")))
+	http.Handle("/static/", http.FileServer(http.Dir("./www")))
 	addr := "127.0.0.1:3000"
 
 	print("http://")
