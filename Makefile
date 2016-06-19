@@ -1,6 +1,6 @@
-.PHONY: all pointer parser-wikimapia injector-legature renderer-html www points objects pipeline clean filter
+.PHONY: all pointer parser-wikimapia injector-legature renderer-html www points objects pipeline clean filter smooth
 
-all: pointer parser-wikimapia injector-legature filter renderer-html www filter
+all: pointer parser-wikimapia injector-legature filter renderer-html www filter smooth
 
 pointer:
 	go build -o ./pointer/pointer ./pointer/
@@ -14,6 +14,9 @@ injector-legature:
 filter:
 	go build -o ./filter/filter ./filter/
 
+smooth:
+	go build -o ./smooth/smooth ./smooth/
+
 renderer-html:
 	go build -o ./renderer-html/renderer-html ./renderer-html/
 
@@ -23,7 +26,7 @@ www:
 points:
 	go run ./pointer/main.go -gpx-file ./pointer/simple.gpx \
 		| tee -p /dev/tty \
-		| go run ./smooth/main.go \
+		| go run ./smooth/main.go -min-distance 200 \
 		| tee /dev/tty > ./cache/points.txt
 
 objects:
