@@ -1,10 +1,14 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"log"
+	"math/rand"
 	"os"
+	"strings"
+	"time"
 
 	"golang.org/x/net/context"
 	"googlemaps.github.io/maps"
@@ -42,17 +46,15 @@ func main() {
 		if iteration == 0 {
 			ungeo, err := geocoder.UnGeocode(object.Point)
 			// Silently omit legature if error.
-			if err == nil {
-				streetName := getStreetName(ungeo)
-				if err == nil {
-					legatureDescr := fmt.Sprintf("Начало пути: %s", streetName)
-					legatureObject := apisal.Object{
-						Type:        apisal.ObjectTypeLegature,
-						Description: legatureDescr,
-					}
-					objectsWriter.WriteObject(legatureObject)
-				}
+			if err != nil {
+				continue
 			}
+			streetName := getStreetName(ungeo)
+			if err != nil {
+				continue
+			}
+			legatureObject := getLegature(streetName)
+			objectsWriter.WriteObject(legatureObject)
 		}
 		objectsWriter.WriteObject(object)
 		iteration++
@@ -88,6 +90,49 @@ func (geocoder GeoCoder) UnGeocode(point apisal.Point) ([]maps.GeocodingResult, 
 	return resp, nil
 }
 
+func getLegature(objName string) apisal.Object {
+	rand.Seed(time.Now().UTC().UnixNano())
+	legatures := map[int][]string{
+		0: []string{
+			"Начало пути: %s",
+			"Точка старта: %s",
+			"%s — то, что доктор прописал, чтобы начать маршрут",
+		},
+		1: []string{
+			"Начинаем путь с %s",
+			"Всё началось с %s",
+			"Маршрут берёт своё начало от %s",
+		},
+		2: []string{
+			"Сначала движемся по %s",
+			"Старт маршрута -- вплотную к %s",
+		},
+		3: []string{
+			"Находим %s, чтобы оттуда начать маршрут",
+			"Берём %s как точку старта",
+		},
+		4: []string{
+			"Стартуем рядом с %s",
+			"Пробираемся %s к началу маршрута",
+		},
+		5: []string{
+			"А на старте только и разговоров, что о %s",
+		},
+	}
+	curCase := 0
+	objNameCases, err := getObjNameCases(objName)
+	// In case of error use nominative.
+	if err == nil {
+		curCase = rand.Intn(5)
+	}
+	legature := legatures[curCase][rand.Intn(len(legatures[curCase]))]
+	legatureObject := apisal.Object{
+		Type:        apisal.ObjectTypeLegature,
+		Description: fmt.Sprintf(legature, objNameCases[curCase]),
+	}
+	return legatureObject
+}
+
 func getStreetName(res []maps.GeocodingResult) string {
 	for _, component := range res {
 		for _, addrComponent := range component.AddressComponents {
@@ -97,4 +142,31 @@ func getStreetName(res []maps.GeocodingResult) string {
 		}
 	}
 	return ""
+}
+
+func getObjNameCases(objName string) (map[int]string, error) {
+	chars := []rune(objName)
+	if strings.HasPrefix(objName, "улица") {
+		body := string(chars[6:])
+		return map[int]string{
+			0: "улица " + body,
+			1: "улицы " + body,
+			2: "улице " + body,
+			3: "улицу " + body,
+			4: "улицей " + body,
+			5: "улице " + body,
+		}, nil
+	}
+	if strings.HasPrefix(objName, "переулок") {
+		body := string(chars[9:])
+		return map[int]string{
+			0: "переулок " + body,
+			1: "переулка " + body,
+			2: "переулку " + body,
+			3: "переулок " + body,
+			4: "переулком " + body,
+			5: "переулке " + body,
+		}, nil
+	}
+	return nil, errors.New("no cases found")
 }
