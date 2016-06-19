@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	minDistance := flag.Float64("min-distance", 0, "Min distance between pointers")
+	minDistance := flag.Float64("min-distance", 0, "Min distance between points")
 	flag.Parse()
 
 	if *minDistance <= 0 {

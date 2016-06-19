@@ -74,7 +74,7 @@ Pointer перегоняет трек из инородного формата (
 
 ```
 -min-distance float
-    Min distance between pointers
+    Min distance between points
 ```
 
 ### parser-wikimapia
