@@ -15,8 +15,136 @@
         .lbl:active {}
         .lbl :invalid + span{color: #A44;}
         .lbl :valid + span{color: #4A4;}
-        #loader{display:none;width:192px;height:12px;margin:0 auto;background:url('html/static/loading-bar.gif');}
     </style>
+
+    <style>
+        #loader{display:none;}
+        // CSS pen only
+        .mini-loader-content {
+          align-items: center;
+          display: flex;
+          height: 100vh;
+          justify-content: center;
+        }
+
+        // Mini-loader CSS
+        svg#mini-loader {
+          height: 50px;
+          width: 50px;
+        }
+
+        #b0 {
+          animation: b0 4s infinite ease;
+          transform-origin: 250px 250px;
+        }
+
+        #b1 {
+          animation: b1 4s infinite ease;
+        }
+
+        #b2 {
+          animation: b2 4s infinite ease;
+        }
+
+        #b3 {
+          animation: b3 4s infinite ease;
+        }
+
+        #b4 {
+          animation: b4 4s infinite ease;
+        }
+
+        @keyframes b0 {
+          0% {
+            transform: rotate(0);
+          }
+          25% {
+            transform: rotate(-90deg);
+          }
+          50% {
+            transform: rotate(-180deg);
+          }
+          75% {
+            transform: rotate(-270deg);
+          }
+          100% {
+            transform: rotate(-360deg);
+          }
+        }
+
+        @keyframes b1 {
+          0% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(0, 355px);
+          }
+          50% {
+            transform: translate(355px, 355px);
+          }
+          75% {
+            transform: translate(355px, 0);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+
+        @keyframes b2 {
+          0% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(-355px, 0);
+          }
+          50% {
+            transform: translate(-355px, 355px);
+          }
+          75% {
+            transform: translate(0, 355px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+
+        @keyframes b3 {
+          0% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(0, -355px);
+          }
+          50% {
+            transform: translate(-355px, -355px);
+          }
+          75% {
+            transform: translate(-355px, 0);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+
+        @keyframes b4 {
+          0% {
+            transform: translate(0, 0);
+          }
+          25% {
+            transform: translate(355px, 0);
+          }
+          50% {
+            transform: translate(355px, -355px);
+          }
+          75% {
+            transform: translate(0, -355px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+    </style>
+
     <script>
         function showLoader() {
             document.getElementById("loader").style.display = "inline-block";
@@ -27,9 +155,26 @@
     <h1>АПИ Сал</h1>
     <form enctype="multipart/form-data" action="/upload" method="post" id="upload-form">
         <label class="lbl">
-            <input type="file" name="gpx" required onchange="/*this.form.submit();*/showLoader()" />
+            <input type="file" name="gpx" required onchange="this.form.submit();showLoader()" />
         </label>
-        <div id="loader"></div>
+        <div id="loader">
+            <div class="mini-loader-content">
+                <svg id="mini-loader" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 500.00001 500.00001">
+                    <g>
+                        <path id="b0" d="M66.734 66.734v366.533h366.532V66.734H66.734zm15 15h336.532v336.533H81.734V81.734z">
+                        </path>
+                        <path id="b2" d="M354.16 2.5v143.34H497.5V2.5H354.16zm10 10H487.5v123.34H364.16V12.5z">
+                        </path>
+                        <path id="b1" d="M0 2.5v143.34h143.34V2.5H0zm10 10h123.34v123.34H10V12.5z">
+                        </path>
+                        <path id="b3" d="M354.16 356.66V500H497.5V356.66H354.16zm10 10H487.5V490H364.16V366.66z">
+                        </path>
+                        <path id="b4" d="M0 356.66V500h143.34V356.66H0zm10 10h123.34V490H10V366.66z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+        </div>
     </form>
 </body>
 </html>
