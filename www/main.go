@@ -45,7 +45,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 
 	io.Copy(gpxFile, file)
 
-	cmd := exec.Command(GPX2HTML_COMMAND, gpxFileName)
+	cmd := exec.Command(GPX2HTML_COMMAND, gpxFileName, "./html/" + rndString + "_babe.html")
 
 	finalHTMLFileName := "/html/" + rndString + ".html"
 	finalHTML, err := createFile("." + finalHTMLFileName)
