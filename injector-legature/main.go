@@ -53,8 +53,10 @@ func main() {
 			if err != nil {
 				continue
 			}
-			legatureObject := getLegature(streetName)
-			objectsWriter.WriteObject(legatureObject)
+			legatureObject, err := getLegature(streetName)
+			if err == nil {
+				objectsWriter.WriteObject(legatureObject)
+			}
 		}
 		objectsWriter.WriteObject(object)
 		iteration++
@@ -90,7 +92,7 @@ func (geocoder GeoCoder) UnGeocode(point apisal.Point) ([]maps.GeocodingResult, 
 	return resp, nil
 }
 
-func getLegature(objName string) apisal.Object {
+func getLegature(objName string) (apisal.Object, error) {
 	rand.Seed(time.Now().UTC().UnixNano())
 	legatures := map[int][]string{
 		0: []string{
@@ -121,16 +123,15 @@ func getLegature(objName string) apisal.Object {
 	}
 	curCase := 0
 	objNameCases, err := getObjNameCases(objName)
-	// In case of error use nominative.
-	if err == nil {
-		curCase = rand.Intn(5)
+	if err != nil {
+		return apisal.Object{}, err
 	}
 	legature := legatures[curCase][rand.Intn(len(legatures[curCase]))]
 	legatureObject := apisal.Object{
 		Type:        apisal.ObjectTypeLegature,
 		Description: fmt.Sprintf(legature, objNameCases[curCase]),
 	}
-	return legatureObject
+	return legatureObject, nil
 }
 
 func getStreetName(res []maps.GeocodingResult) string {
