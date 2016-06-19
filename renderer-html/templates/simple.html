@@ -69,7 +69,7 @@
     <div class="pure-u-1-24 pure-u-lg-2-24"></div>
     <div class="pure-u-22-24 pure-u-lg-20-24">
         <a name="object-{{ $key }}"></a>
-        <h2>{{$obj.Title | html}}</h2>
+        <h2 onclick="window.location.href='#';">{{$obj.Title | html}}</h2>
         {{ $obj.Description }}<!-- <p>...</p><p>...</p> -->
         <!--sup>{{$obj.Point.Lat}},{{$obj.Point.Lon}}</sup-->
         {{if $obj.Images}}
