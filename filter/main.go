@@ -39,7 +39,7 @@ func main() {
 		imagesCount := len(object.Images)
 		imagesExist := imagesCount > 0
 
-		if !titleLen || !descLen || !imagesExist {
+		if !titleLen && !descLen && !imagesExist {
 			continue
 		}
 		if imagesCount < photosMin {
