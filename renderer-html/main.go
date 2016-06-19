@@ -11,6 +11,11 @@ import (
 	"fmt"
 )
 
+type TplObject struct {
+	Object lib.Object
+	Ligature bool
+}
+
 func main() {
 	pFilename := flag.String("p", "", "Points filename")
 	oFilename := flag.String("o", "", "Objects filename")
@@ -30,13 +35,24 @@ func main() {
 		objects[i].Description = fmt.Sprintf("<p>%s</p>", replacer.Replace(objects[i].Description))
 	}
 
+	tplObjects := make([]TplObject, 0, 100)
+	lig := false
+	for _, object := range objects {
+		lig = false
+		if object.Type == lib.ObjectTypeLegature {
+			lig = true
+		}
+		tplObjects = append(tplObjects, TplObject{Object: object, Ligature: lig})
+	}
+
 	context := struct {
 		Points  []lib.Point
-		Objects []lib.Object
+		Objects []TplObject
 	}{
 		points,
-		objects,
+		tplObjects,
 	}
+
 
 	template := template.Must(template.ParseFiles(*tFilename))
 	err = template.Execute(os.Stdout, context)

@@ -16,6 +16,7 @@
         li {margin: 0 10px}
         .footer {height: 7em; background: darkgreen; color: white}
         .footer-text {box-sizing: border-box; padding: 2em}
+        .ligature {padding: 20px 0 20px 0; font-size: 3em}
     </style>
 </head>
 <body>
@@ -36,7 +37,7 @@
 
         {{ if .Points }}
             var latlngs = [
-            {{range $key,$obj := .Points}}[{{$obj.Lat}}, {{$obj.Lon}}],
+            {{range $key,$point := .Points}}[{{$point.Lat}}, {{$point.Lon}}],
             {{end}}
             ];
 
@@ -46,7 +47,7 @@
 
         {{ if .Objects }}
             {{range $key,$obj := .Objects }}
-            DG.marker([{{ $obj.Lat }}, {{ $obj.Lon }}], {label : '{{ $obj.Title |html }}'})
+            DG.marker([{{ $obj.Object.Lat }}, {{ $obj.Object.Lon }}], {label : '{{ $obj.Object.Title |html }}'})
             .on('click', function(){ window.location.href = "#object-{{ $key }}";})
             .addTo(map);
             {{end}}
@@ -65,16 +66,29 @@
 
 
 {{range $key,$obj := .Objects }}
+{{if $obj.Ligature}}
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 ligature">
+        {{ $obj.Object.Description }}
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+{{else}}
+
 <div class="pure-g">
     <div class="pure-u-1-24 pure-u-lg-2-24"></div>
     <div class="pure-u-22-24 pure-u-lg-20-24">
         <a name="object-{{ $key }}"></a>
-        <h2 onclick="window.location.href='#';">{{$obj.Title | html}}</h2>
-        {{ $obj.Description }}<!-- <p>...</p><p>...</p> -->
-        <!--sup>{{$obj.Point.Lat}},{{$obj.Point.Lon}}</sup-->
-        {{if $obj.Images}}
+        <h2 onclick="window.location.href='#';">{{$obj.Object.Title | html}}</h2>
+        {{ $obj.Object.Description }}<!-- <p>...</p><p>...</p> -->
+        <!--sup>{{$obj.Object.Point.Lat}},{{$obj.Object.Point.Lon}}</sup-->
+        {{if $obj.Object.Images}}
         <div class="galleria-{{$key}}">
-            {{range $obj.Images}}<img src="{{.URL | html}}" title="{{.Title | html}}"/>
+            {{range $obj.Object.Images}}<img src="{{.URL | html}}" title="{{.Title | html}}"/>
             {{end}}
         </div>
         <script>
@@ -87,6 +101,8 @@
     </div>
     <div class="pure-u-1-24 pure-u-lg-2-24"></div>
 </div>
+{{end}}
+
 {{else}}
     <div>Сорян, нет объектов.</div>
 {{end}}
