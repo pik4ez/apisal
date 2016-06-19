@@ -1,12 +1,14 @@
 package main
 
 import (
-	"html/template"
+	"text/template"
 	"log"
 	"os"
 	lib "github.com/pik4ez/apisal/apisal"
 	"flag"
 	"io"
+	"strings"
+	"fmt"
 )
 
 func main() {
@@ -22,6 +24,11 @@ func main() {
 
 	objects, err := loadObjects(*oFilename)
 	points, err := loadPoints(*pFilename)
+
+	replacer := strings.NewReplacer("\n\n", "</p><p>")
+	for i := 0; i < len(objects); i++ {
+		objects[i].Description = fmt.Sprintf("<p>%s</p>", replacer.Replace(objects[i].Description))
+	}
 
 	context := struct {
 		Points  []lib.Point

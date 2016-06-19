@@ -37,9 +37,9 @@ render:
 	cat ./cache/objects.txt \
 		| tee -p /dev/tty \
 		| go run ./renderer-html/main.go -o ./cache/objects.txt -p ./cache/points.txt \
-			-t ./renderer-html/templates/simple.html > ./cache/result.html
+			-t ./renderer-html/templates/simple.html > ./html/render.html
 	@echo
-	@echo "file://"$(realpath ./cache/result.html)
+	@echo "file://"$(realpath ./html/render.html)
 
 pipeline: points objects render
 

@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
-    <script src="/rendered/jquery.js"></script>
-    <script src="/rendered/galleria/galleria-1.4.2.min.js"></script>
+    <script src="./static/jquery.js"></script>
+    <script src="./static/galleria/galleria-1.4.2.min.js"></script>
     <script>
-        Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+        Galleria.loadTheme('./static/galleria/themes/classic/galleria.classic.js');
     </script>
     <style>
         ul {list-style: none; margin: 0}
@@ -32,13 +32,27 @@
             scrollWheelZoom: false
         });
 
-        var latlngs = [
-        {{range .Points }}[{{.Lat}}, {{.Lon}}],
-        {{end}}
-        ];
+        // var point = DG.marker([55.751772, 37.601633]).addTo(map);
 
-        var polyline = DG.polyline(latlngs, {color: '#ff5500'}).addTo(map);
-        map.fitBounds(polyline.getBounds())
+        {{ if .Points }}
+            var latlngs = [
+            {{range $key,$obj := .Points}}[{{$obj.Lat}}, {{$obj.Lon}}],
+            {{end}}
+            ];
+
+            var polyline = DG.polyline(latlngs, {color: '#ff5500'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        {{ end }}
+
+        {{ if .Objects }}
+            {{range $key,$obj := .Objects }}
+            DG.marker([{{ $obj.Lat }}, {{ $obj.Lon }}], {label : '{{ $obj.Title |html }}'})
+            .on('click', function(){ window.location.href = "#object-{{ $key }}";})
+            .addTo(map);
+            {{end}}
+        {{ end }}
+
+
     });
 </script>
 <!--div class="pure-g">
@@ -54,13 +68,13 @@
 <div class="pure-g">
     <div class="pure-u-1-24 pure-u-lg-2-24"></div>
     <div class="pure-u-22-24 pure-u-lg-20-24">
-        <h2>{{$obj.Title}}</h2>
-        <p>{{$obj.Description}}</p>
-        <sup>{{$obj.Point.Lat}},{{$obj.Point.Lon}}</sup>
+        <a name="object-{{ $key }}"></a>
+        <h2>{{$obj.Title | html}}</h2>
+        {{ $obj.Description }}<!-- <p>...</p><p>...</p> -->
+        <!--sup>{{$obj.Point.Lat}},{{$obj.Point.Lon}}</sup-->
         {{if $obj.Images}}
         <div class="galleria-{{$key}}">
-            {{range $obj.Images}}
-            <img src="{{.URL}}" title="{{.Title}}"/>
+            {{range $obj.Images}}<img src="{{.URL | html}}" title="{{.Title | html}}"/>
             {{end}}
         </div>
         <script>
