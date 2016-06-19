@@ -1,0 +1,1523 @@
+<!doctype html>
+<html>
+<head>
+    <title>АПИ Сал вам аписал</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script src="./static/jquery.js"></script>
+    <script src="./static/galleria/galleria-1.4.2.min.js"></script>
+    <script>
+        Galleria.loadTheme('./static/galleria/themes/classic/galleria.classic.js');
+    </script>
+    <style>
+        ul {list-style: none; margin: 0}
+        li {margin: 0 10px}
+        .footer {height: 7em; background: darkgreen; color: white}
+        .footer-text {box-sizing: border-box; padding: 2em}
+        .ligature {padding: 20px 0 20px 0; font-size: 3em}
+    </style>
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-1-1">
+        <div id="map" style="width:100%; height:400px; background: darkgreen"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var map;
+    DG.then(function () {
+        map = DG.map('map', {
+            zoom: 6,
+            scrollWheelZoom: false
+        });
+
+        // var point = DG.marker([55.751772, 37.601633]).addTo(map);
+
+        
+            var latlngs = [
+            [51.40547, 30.04589],
+            [51.40762, 30.05224],
+            [51.40472, 30.05052],
+            [51.40515, 30.05825],
+            [51.40301, 30.06099],
+            [51.39958, 30.06477],
+            [51.39551, 30.06958],
+            
+            ];
+
+            var polyline = DG.polyline(latlngs, {color: '#ff5500'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        
+
+        
+            
+            DG.marker([0, 0], {label : ''})
+            .on('click', function(){ window.location.href = "#object-0";})
+            .addTo(map);
+            
+            DG.marker([51.40530465, 30.0454415], {label : 'ул. Леси Украинки, 38/2'})
+            .on('click', function(){ window.location.href = "#object-1";})
+            .addTo(map);
+            
+            DG.marker([51.4065388, 30.04608795], {label : 'Спортивная ул., 3'})
+            .on('click', function(){ window.location.href = "#object-2";})
+            .addTo(map);
+            
+            DG.marker([51.40423015, 30.04603675], {label : 'ДОСААФ'})
+            .on('click', function(){ window.location.href = "#object-3";})
+            .addTo(map);
+            
+            DG.marker([51.4041113, 30.0460356], {label : 'Территория школы ДОСААФ'})
+            .on('click', function(){ window.location.href = "#object-4";})
+            .addTo(map);
+            
+            DG.marker([51.4049032, 30.04701295], {label : 'ул. Леси Украинки, 34'})
+            .on('click', function(){ window.location.href = "#object-5";})
+            .addTo(map);
+            
+            DG.marker([51.4040803, 30.046214], {label : 'Гараж'})
+            .on('click', function(){ window.location.href = "#object-6";})
+            .addTo(map);
+            
+            DG.marker([51.40605925, 30.04473475], {label : 'Спортивная ул., 1/40'})
+            .on('click', function(){ window.location.href = "#object-7";})
+            .addTo(map);
+            
+            DG.marker([51.40411545, 30.0466626], {label : 'КПП'})
+            .on('click', function(){ window.location.href = "#object-8";})
+            .addTo(map);
+            
+            DG.marker([51.4047112, 30.04448925], {label : 'Бывший парк'})
+            .on('click', function(){ window.location.href = "#object-9";})
+            .addTo(map);
+            
+            DG.marker([51.4070894, 30.04689875], {label : 'Спортивная ул., 5'})
+            .on('click', function(){ window.location.href = "#object-10";})
+            .addTo(map);
+            
+            DG.marker([51.40625495, 30.04750275], {label : 'Спортивная ул., 6'})
+            .on('click', function(){ window.location.href = "#object-11";})
+            .addTo(map);
+            
+            DG.marker([51.40745135, 30.0463254], {label : 'Спортивная ул., 7'})
+            .on('click', function(){ window.location.href = "#object-12";})
+            .addTo(map);
+            
+            DG.marker([51.4050345, 30.0480633], {label : 'Телефонная будка'})
+            .on('click', function(){ window.location.href = "#object-13";})
+            .addTo(map);
+            
+            DG.marker([51.40469555, 30.04800435], {label : 'ул. Леси Украинки, 34а'})
+            .on('click', function(){ window.location.href = "#object-14";})
+            .addTo(map);
+            
+            DG.marker([51.40567365, 30.0482592], {label : 'Заброшенная ТП'})
+            .on('click', function(){ window.location.href = "#object-15";})
+            .addTo(map);
+            
+            DG.marker([51.40825095, 30.0460349], {label : 'Припятская средняя школа № 4'})
+            .on('click', function(){ window.location.href = "#object-16";})
+            .addTo(map);
+            
+            DG.marker([51.40787285, 30.04716615], {label : 'Спортивная ул., 9'})
+            .on('click', function(){ window.location.href = "#object-17";})
+            .addTo(map);
+            
+            DG.marker([51.4059531, 30.0484415], {label : 'Спортивная ул., 10'})
+            .on('click', function(){ window.location.href = "#object-18";})
+            .addTo(map);
+            
+            DG.marker([51.407084, 30.0480824], {label : 'Телефонная будка'})
+            .on('click', function(){ window.location.href = "#object-19";})
+            .addTo(map);
+            
+            DG.marker([51.40738395, 30.0479738], {label : '«Новый гастроном»'})
+            .on('click', function(){ window.location.href = "#object-20";})
+            .addTo(map);
+            
+            DG.marker([51.4085104, 30.04555285], {label : 'IV микрорайон'})
+            .on('click', function(){ window.location.href = "#object-21";})
+            .addTo(map);
+            
+            DG.marker([51.40761615, 30.05281795], {label : 'Общежитие № 8 ГПТУ'})
+            .on('click', function(){ window.location.href = "#object-22";})
+            .addTo(map);
+            
+            DG.marker([51.4067766, 30.05244135], {label : 'ул. Лазарева, 9'})
+            .on('click', function(){ window.location.href = "#object-23";})
+            .addTo(map);
+            
+            DG.marker([51.4079817, 30.05136245], {label : 'КБО «Юбилейный»'})
+            .on('click', function(){ window.location.href = "#object-24";})
+            .addTo(map);
+            
+            DG.marker([51.40837155, 30.0533151], {label : 'Семейные общежития № 15 и № 16'})
+            .on('click', function(){ window.location.href = "#object-25";})
+            .addTo(map);
+            
+            DG.marker([51.40706975, 30.05083265], {label : 'Средняя школа № 3'})
+            .on('click', function(){ window.location.href = "#object-26";})
+            .addTo(map);
+            
+            DG.marker([51.40938485, 30.05246685], {label : 'Вход на стадион'})
+            .on('click', function(){ window.location.href = "#object-27";})
+            .addTo(map);
+            
+            DG.marker([51.40606975, 30.05307265], {label : 'ул. Лазарева, 7'})
+            .on('click', function(){ window.location.href = "#object-28";})
+            .addTo(map);
+            
+            DG.marker([51.409295, 30.05117835], {label : 'ул. Героев Сталинграда, 2'})
+            .on('click', function(){ window.location.href = "#object-29";})
+            .addTo(map);
+            
+            DG.marker([51.4055051, 30.05245005], {label : 'Детская поликлиника'})
+            .on('click', function(){ window.location.href = "#object-30";})
+            .addTo(map);
+            
+            DG.marker([51.4069375, 30.05436785], {label : 'ГПТУ № 8'})
+            .on('click', function(){ window.location.href = "#object-31";})
+            .addTo(map);
+            
+            DG.marker([51.40963295, 30.0507214], {label : 'ул. Героев Сталинграда, 4'})
+            .on('click', function(){ window.location.href = "#object-32";})
+            .addTo(map);
+            
+            DG.marker([51.4082214, 30.04994935], {label : 'Спортивная ул., 17а'})
+            .on('click', function(){ window.location.href = "#object-33";})
+            .addTo(map);
+            
+            DG.marker([51.40866765, 30.0544161], {label : 'Общежитие № 19'})
+            .on('click', function(){ window.location.href = "#object-34";})
+            .addTo(map);
+            
+            DG.marker([51.41025325, 30.05159745], {label : 'Гидропроектовская ул., 1'})
+            .on('click', function(){ window.location.href = "#object-35";})
+            .addTo(map);
+            
+            DG.marker([51.40620145, 30.0501608], {label : 'Школьная мастерская'})
+            .on('click', function(){ window.location.href = "#object-36";})
+            .addTo(map);
+            
+            DG.marker([51.40999435, 30.0508944], {label : 'ул. Героев Сталинграда, 8'})
+            .on('click', function(){ window.location.href = "#object-37";})
+            .addTo(map);
+            
+            DG.marker([51.4099317, 30.05055645], {label : 'ул. Героев Сталинграда, 6'})
+            .on('click', function(){ window.location.href = "#object-38";})
+            .addTo(map);
+            
+            DG.marker([51.4107731, 30.05230685], {label : 'Гидропроектовская ул., 3'})
+            .on('click', function(){ window.location.href = "#object-39";})
+            .addTo(map);
+            
+            DG.marker([51.3949966, 30.06945745], {label : 'Путепровод'})
+            .on('click', function(){ window.location.href = "#object-40";})
+            .addTo(map);
+            
+            DG.marker([51.39443935, 30.06429475], {label : 'Смотровая кирпичная башня (Вышка) - 2'})
+            .on('click', function(){ window.location.href = "#object-41";})
+            .addTo(map);
+            
+            DG.marker([51.3892386, 30.06899135], {label : 'Художественная мастерская ЧАЭС'})
+            .on('click', function(){ window.location.href = "#object-42";})
+            .addTo(map);
+            
+            DG.marker([51.38939075, 30.0682658], {label : 'Припятский медицинский вытрезвитель'})
+            .on('click', function(){ window.location.href = "#object-43";})
+            .addTo(map);
+            
+            DG.marker([51.3891833, 30.070028], {label : 'Ремонтно-строительный цех ЧАЭС'})
+            .on('click', function(){ window.location.href = "#object-44";})
+            .addTo(map);
+            
+            DG.marker([51.3974095, 30.06427995], {label : 'Брошенные цистерны при въезде в Припять'})
+            .on('click', function(){ window.location.href = "#object-45";})
+            .addTo(map);
+            
+            DG.marker([51.4004104, 30.0655848], {label : 'System monitorowania promieniowania i wczesnego ostrzegania'})
+            .on('click', function(){ window.location.href = "#object-46";})
+            .addTo(map);
+            
+            DG.marker([51.4011239, 30.06635745], {label : 'Автовокзал'})
+            .on('click', function(){ window.location.href = "#object-47";})
+            .addTo(map);
+            
+            DG.marker([51.3888762, 30.0710714], {label : 'Посёлок Лесной'})
+            .on('click', function(){ window.location.href = "#object-48";})
+            .addTo(map);
+            
+            DG.marker([51.40064035, 30.0652495], {label : 'Площадка перед автовокзалом'})
+            .on('click', function(){ window.location.href = "#object-49";})
+            .addTo(map);
+            
+            DG.marker([51.4004774, 30.07419885], {label : 'Брошенная техника'})
+            .on('click', function(){ window.location.href = "#object-50";})
+            .addTo(map);
+            
+        
+
+
+    });
+</script>
+<!--div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        456
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div-->
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 ligature">
+        <p>Начало пути: вулиця Спортивна</p>
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-1"></a>
+        <h2 onclick="window.location.href='#';">ул. Леси Украинки, 38/2</h2>
+        <p>Шестнадцатиэтажный дом.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-1">
+            <img src="http://photos.wikimapia.org/p/00/03/75/56/54_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/56/55_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/57/09/19_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/57/09/20_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/14/64/27_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/20/62/70_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/43/97_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-1', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-2"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 3</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-2">
+            <img src="http://photos.wikimapia.org/p/00/02/03/94/42_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-2', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-3"></a>
+        <h2 onclick="window.location.href='#';">ДОСААФ</h2>
+        <p>После аварии использовался как электроцех приблизительно до 2004-2006 года</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-3">
+            <img src="http://photos.wikimapia.org/p/00/03/47/51/02_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/73_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/74_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/76_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/77_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/70/08/21_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-3', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-4"></a>
+        <h2 onclick="window.location.href='#';">Территория школы ДОСААФ</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-4">
+            <img src="http://photos.wikimapia.org/p/00/04/70/08/79_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-4', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-5"></a>
+        <h2 onclick="window.location.href='#';">ул. Леси Украинки, 34</h2>
+        <p>Девятиэтажный четырёхподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-5">
+            <img src="http://photos.wikimapia.org/p/00/05/14/64/57_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-5', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-6"></a>
+        <h2 onclick="window.location.href='#';">Гараж</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-6">
+            <img src="http://photos.wikimapia.org/p/00/04/70/08/75_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-6', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-7"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 1/40</h2>
+        <p>Девятиэтажный трёхподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-7">
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/69_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/70_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/33/44_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-7', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-8"></a>
+        <h2 onclick="window.location.href='#';">КПП</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-8">
+            <img src="http://photos.wikimapia.org/p/00/04/70/08/91_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-8', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-9"></a>
+        <h2 onclick="window.location.href='#';">Бывший парк</h2>
+        <p>Ранее ухоженная территория с клумбой в центре сходящихся лучевых аллей. имелись скульптуры и лавочки.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-9">
+            <img src="http://photos.wikimapia.org/p/00/04/70/10/21_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/70/10/24_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-9', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-10"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 5</h2>
+        <p>Девятиэтажный трёхподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-10">
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/35_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/36_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/54_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-10', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-11"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 6</h2>
+        <p>Девятиэтажный двухподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-11">
+            <img src="http://photos.wikimapia.org/p/00/05/35/41/21_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-11', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-12"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 7</h2>
+        <p>Девятиэтажный одноподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-12">
+            <img src="http://photos.wikimapia.org/p/00/01/71/95/78_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/95/91_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/95/92_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-12', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-13"></a>
+        <h2 onclick="window.location.href='#';">Телефонная будка</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-13">
+            <img src="http://photos.wikimapia.org/p/00/04/57/09/50_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/57/09/52_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/57/09/53_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-13', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-14"></a>
+        <h2 onclick="window.location.href='#';">ул. Леси Украинки, 34а</h2>
+        <p>Девятиэтажный трёхподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-14">
+            <img src="http://photos.wikimapia.org/p/00/01/71/98/31_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/98/34_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-14', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-15"></a>
+        <h2 onclick="window.location.href='#';">Заброшенная ТП</h2>
+        <p>Заброшенная трансформаторная подстанция.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-15">
+            <img src="http://photos.wikimapia.org/p/00/04/03/38/38_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-15', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-16"></a>
+        <h2 onclick="window.location.href='#';">Припятская средняя школа № 4</h2>
+        <p>Общеобразовательная школа на 1176 учащихся. Типовой проект 224-1-314.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-16">
+            <img src="http://photos.wikimapia.org/p/00/03/23/53/71_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/23/53/74_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/23/53/83_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/23/53/91_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/23/53/95_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/23/54/14_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-16', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-17"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 9</h2>
+        <p>Девятиэтажный двухподъездный панельный жилой дом серии 121-60-25.</p><p>На первом этаже находилось отделение сберкассы № 3046035.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-17">
+            <img src="http://photos.wikimapia.org/p/00/00/82/53/86_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-17', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-18"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 10</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-18">
+            <img src="http://photos.wikimapia.org/p/00/03/57/42/10_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/57/42/11_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-18', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-19"></a>
+        <h2 onclick="window.location.href='#';">Телефонная будка</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-19">
+            <img src="http://photos.wikimapia.org/p/00/04/70/44/58_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-19', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-20"></a>
+        <h2 onclick="window.location.href='#';">«Новый гастроном»</h2>
+        <p>Продовольственный магазин. Аналогичное по проекту здание было построено на окраине Припяти (м-н "Спорттовары" или "Рекорд").</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-20">
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/51_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/67/47/25_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/53/74_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/53/76_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/53/79_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/53/81_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-20', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-21"></a>
+        <h2 onclick="window.location.href='#';">IV микрорайон</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40547,30.04589</sup-->
+        
+        <div class="galleria-21">
+            <img src="http://photos.wikimapia.org/p/00/05/35/42/88_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/42/89_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/79/36_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/82/55_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/92/64_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-21', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-22"></a>
+        <h2 onclick="window.location.href='#';">Общежитие № 8 ГПТУ</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-22">
+            <img src="http://photos.wikimapia.org/p/00/05/35/27/26_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-22', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-23"></a>
+        <h2 onclick="window.location.href='#';">ул. Лазарева, 9</h2>
+        <p>Пятиподъездный «Г»-образный «тольяттинский» дом серии 121-Т.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-23">
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/60_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/61_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/62_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/20/62/95_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-23', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-24"></a>
+        <h2 onclick="window.location.href='#';">КБО «Юбилейный»</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-24">
+            <img src="http://photos.wikimapia.org/p/00/01/25/61/29_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/30/03/98_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/57/63/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/57/63/87_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/60/20/59_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/92/67_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-24', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-25"></a>
+        <h2 onclick="window.location.href='#';">Семейные общежития № 15 и № 16</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-25">
+            <img src="http://photos.wikimapia.org/p/00/05/20/62/12_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-25', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-26"></a>
+        <h2 onclick="window.location.href='#';">Средняя школа № 3</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-26">
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/67_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/55_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/56_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/57_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/62_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/64_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-26', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-27"></a>
+        <h2 onclick="window.location.href='#';">Вход на стадион</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-27">
+            <img src="http://photos.wikimapia.org/p/00/02/70/24/87_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/19/86/14_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/70/07/86_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/70/07/87_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-27', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-28"></a>
+        <h2 onclick="window.location.href='#';">ул. Лазарева, 7</h2>
+        <p>Шестнадцатиэтажный одноподъездный панельный жилой дом серии II-60.</p><p>На грыше расположен герб УССР.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-28">
+            <img src="http://photos.wikimapia.org/p/00/00/61/02/39_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/61/02/40_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/56/74_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/56/78_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/56/81_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/56/82_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/81/40_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-28', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-29"></a>
+        <h2 onclick="window.location.href='#';">ул. Героев Сталинграда, 2</h2>
+        <p>Девятиэтажный двухподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-29">
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/81_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/97/85_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/08/12/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/09_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/11_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/27/49_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-29', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-30"></a>
+        <h2 onclick="window.location.href='#';">Детская поликлиника</h2>
+        <p>Детская поликлиника на 480 посещений в смену. Типовой проект 252-4-16.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-30">
+            <img src="http://photos.wikimapia.org/p/00/01/71/96/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/35_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/36_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/38_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/39_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/41_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/35/42_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-30', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-31"></a>
+        <h2 onclick="window.location.href='#';">ГПТУ № 8</h2>
+        <p>Городское профессионально-техническое училище.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-31">
+            <img src="http://photos.wikimapia.org/p/00/03/17/86/62_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/44_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/75/57/45_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/14/66/45_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/27/14_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/27/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/27/17_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-31', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-32"></a>
+        <h2 onclick="window.location.href='#';">ул. Героев Сталинграда, 4</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-32">
+            <img src="http://photos.wikimapia.org/p/00/05/49/03/43_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-32', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-33"></a>
+        <h2 onclick="window.location.href='#';">Спортивная ул., 17а</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-33">
+            <img src="http://photos.wikimapia.org/p/00/02/08/12/46_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-33', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-34"></a>
+        <h2 onclick="window.location.href='#';">Общежитие № 19</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-34">
+            <img src="http://photos.wikimapia.org/p/00/03/37/14/30_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/37/14/31_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/37/14/32_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/44/31_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/81/29_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-34', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-35"></a>
+        <h2 onclick="window.location.href='#';">Гидропроектовская ул., 1</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-35">
+            <img src="http://photos.wikimapia.org/p/00/05/35/27/47_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/92/10_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-35', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-36"></a>
+        <h2 onclick="window.location.href='#';">Школьная мастерская</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-36">
+            <img src="http://photos.wikimapia.org/p/00/03/92/54/43_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/54/48_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/54/49_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/54/50_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-36', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-37"></a>
+        <h2 onclick="window.location.href='#';">ул. Героев Сталинграда, 8</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-37">
+            <img src="http://photos.wikimapia.org/p/00/05/35/26/98_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/26/99_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-37', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-38"></a>
+        <h2 onclick="window.location.href='#';">ул. Героев Сталинграда, 6</h2>
+        <p>Девятиэтажный одноподъездный панельный жилой дом серии 121-60-25.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-38">
+            <img src="http://photos.wikimapia.org/p/00/01/67/97/82_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/67/97/84_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-38', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-39"></a>
+        <h2 onclick="window.location.href='#';">Гидропроектовская ул., 3</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.40762,30.05224</sup-->
+        
+        <div class="galleria-39">
+            <img src="http://photos.wikimapia.org/p/00/05/35/26/20_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/26/21_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/35/26/23_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-39', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-40"></a>
+        <h2 onclick="window.location.href='#';">Путепровод</h2>
+        <p>Duke Leshy (гость) написал 3 года назад
+В автобусе 20.02.2010 фон на мосту не превышал 60 мкр/ч. Гиды из Pripyat.com утверждают, что рассказы про чудовищную радиацию на мосту - один из долгоживущих мифов Зоны. Подробности: http://video.yandex.ru/users/buggenerator/view/1/#hq</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-40">
+            <img src="http://photos.wikimapia.org/p/00/00/50/33/14_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/11/22/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/71/80/24_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-40', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-41"></a>
+        <h2 onclick="window.location.href='#';">Смотровая кирпичная башня (Вышка) - 2</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-41">
+            <img src="http://photos.wikimapia.org/p/00/01/57/63/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/24/95/51_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-41', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-42"></a>
+        <h2 onclick="window.location.href='#';">Художественная мастерская ЧАЭС</h2>
+        <p>Здание барачного типа, бывшее общежитие, где до 1979 года жили строители города Припять.
+С 1979 по 1986 год – художественная мастерская ЧАЭС.
+Первый начальник (1979-1982) – Бомбиза Василий Григорьевич.
+Второй начальник (1983-1986) – Шамшурин Виктор Иванович.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-43"></a>
+        <h2 onclick="window.location.href='#';">Припятский медицинский вытрезвитель</h2>
+        <p>Барачное здание, бывшее общежитие. С 1979 по 1986 год – медицинский вытрезвитель.
+Первый начальник – капитан Тихий Н.И., второй начальник – капитан Бабич П.П., третий начальник – капитан Качалов Э.Г.
+Работа и быт этого заведения описаны в трагикомическом романе Станислава Константинова "Реминисценции или Записки сивого мерина".</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-44"></a>
+        <h2 onclick="window.location.href='#';">Ремонтно-строительный цех ЧАЭС</h2>
+        <p>Барачное здание. С 1977 по 1986 год – ремонтно-строительный цех Чернобыльской АЭС.
+Первым начальником РСЦ был Олег Максимович Дзюбайло.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-45"></a>
+        <h2 onclick="window.location.href='#';">Брошенные цистерны при въезде в Припять</h2>
+        <p>Фонящие ржавые емкости для ГСМ в небольшом лесу близ г. Припять.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-45">
+            <img src="http://photos.wikimapia.org/p/00/02/81/40/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/81/53/95_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-45', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-46"></a>
+        <h2 onclick="window.location.href='#';">System monitorowania promieniowania i wczesnego ostrzegania</h2>
+        <p>System monitorowania promieniowania i wczesnego ostrzegania sfinansowany przez TACIS (Program Pomocy Technicznej dla Wspólnoty Niepodległych Państw), w którym uczestniczy także Ukraina. Stoi tam od 2011 roku.</p><p>Ma tylko jedno wejście, wystaje z niego coś na wzór anteny, jest podłączony kablem do sieci elektrycznej a z wystającej rury dmucha silny strumień powietrza, wydając głośne buczenie.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-46">
+            <img src="http://photos.wikimapia.org/p/00/04/52/45/53_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/52/45/59_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/52/45/60_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-46', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-47"></a>
+        <h2 onclick="window.location.href='#';">Автовокзал</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-47">
+            <img src="http://photos.wikimapia.org/p/00/00/28/04/86_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/28/04/83_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/28/04/84_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/28/04/85_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-47', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-48"></a>
+        <h2 onclick="window.location.href='#';">Посёлок Лесной</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-48">
+            <img src="http://photos.wikimapia.org/p/00/02/96/67/06_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/96/67/08_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/96/67/09_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/96/67/10_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-48', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-49"></a>
+        <h2 onclick="window.location.href='#';">Площадка перед автовокзалом</h2>
+        <p>До  аварии на этой площадке были фонари-пирамидки</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-49">
+            <img src="http://photos.wikimapia.org/p/00/03/78/60/41_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/78/60/42_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/78/60/43_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-49', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-50"></a>
+        <h2 onclick="window.location.href='#';">Брошенная техника</h2>
+        <p>Скопление брошенной техники на нефтебазе. Среди прочего есть самоходная артиллерийская установка ИСУ-152, произведенная во время Великой Отечественной войны, скорее всего использовавшаяся как тягач и для сноса зданий.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>51.39551,30.06958</sup-->
+        
+        <div class="galleria-50">
+            <img src="http://photos.wikimapia.org/p/00/00/79/36/12_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/09/19/59_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/21/43/68_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-50', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+<div class="pure-g footer">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 footer-text">
+        ПОДЕЛИТЬСЯ
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,918 @@
+<!doctype html>
+<html>
+<head>
+    <title>АПИ Сал вам аписал</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script src="./static/jquery.js"></script>
+    <script src="./static/galleria/galleria-1.4.2.min.js"></script>
+    <script>
+        Galleria.loadTheme('./static/galleria/themes/classic/galleria.classic.js');
+    </script>
+    <style>
+        ul {list-style: none; margin: 0}
+        li {margin: 0 10px}
+        .footer {height: 7em; background: darkgreen; color: white}
+        .footer-text {box-sizing: border-box; padding: 2em}
+        .ligature {padding: 20px 0 20px 0; font-size: 3em}
+    </style>
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-1-1">
+        <div id="map" style="width:100%; height:400px; background: darkgreen"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var map;
+    DG.then(function () {
+        map = DG.map('map', {
+            zoom: 6,
+            scrollWheelZoom: false
+        });
+
+        // var point = DG.marker([55.751772, 37.601633]).addTo(map);
+
+        
+            var latlngs = [
+            [-33.43745, -70.65029],
+            [-33.43917, -70.65114],
+            [-33.44018, -70.652],
+            [-33.44132, -70.652],
+            [-33.44433, -70.652],
+            [-33.44548, -70.65938],
+            [-33.44662, -70.66024],
+            [-33.44719, -70.6611],
+            [-33.44977, -70.66041],
+            [-33.45665, -70.6575],
+            
+            ];
+
+            var polyline = DG.polyline(latlngs, {color: '#ff5500'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        
+
+        
+            
+            DG.marker([0, 0], {label : ''})
+            .on('click', function(){ window.location.href = "#object-0";})
+            .addTo(map);
+            
+            DG.marker([-33.4369029, -70.65027055], {label : 'Municipalidad de Santiago'})
+            .on('click', function(){ window.location.href = "#object-1";})
+            .addTo(map);
+            
+            DG.marker([-33.4374278, -70.65010025], {label : 'Estatua a Pedro de Valdivia'})
+            .on('click', function(){ window.location.href = "#object-2";})
+            .addTo(map);
+            
+            DG.marker([-33.43779905, -70.65008805], {label : 'Pérgola'})
+            .on('click', function(){ window.location.href = "#object-3";})
+            .addTo(map);
+            
+            DG.marker([-33.43785085, -70.6504972], {label : 'Plaza de Armas'})
+            .on('click', function(){ window.location.href = "#object-4";})
+            .addTo(map);
+            
+            DG.marker([-33.43735515, -70.65056025], {label : 'Estación Plaza de Armas - Línea 5 / Línea 3'})
+            .on('click', function(){ window.location.href = "#object-5";})
+            .addTo(map);
+            
+            DG.marker([-33.43854035, -70.6504087], {label : 'Portal Fernández Concha'})
+            .on('click', function(){ window.location.href = "#object-6";})
+            .addTo(map);
+            
+            DG.marker([-33.43705295, -70.65070375], {label : 'Museo Histórico Nacional'})
+            .on('click', function(){ window.location.href = "#object-7";})
+            .addTo(map);
+            
+            DG.marker([-33.43564955, -70.6505348], {label : 'Iglesia de Santo Domingo'})
+            .on('click', function(){ window.location.href = "#object-8";})
+            .addTo(map);
+            
+            DG.marker([-33.43701715, -70.65107525], {label : 'Edificio Correos de Chile'})
+            .on('click', function(){ window.location.href = "#object-9";})
+            .addTo(map);
+            
+            DG.marker([-33.44025365, -70.6503832], {label : 'Banco de Chile'})
+            .on('click', function(){ window.location.href = "#object-10";})
+            .addTo(map);
+            
+            DG.marker([-33.43791025, -70.65132335], {label : 'Parroquia del Sagrario'})
+            .on('click', function(){ window.location.href = "#object-11";})
+            .addTo(map);
+            
+            DG.marker([-33.43838895, -70.6513059], {label : 'Historical Center'})
+            .on('click', function(){ window.location.href = "#object-12";})
+            .addTo(map);
+            
+            DG.marker([-33.43897565, -70.6512737], {label : 'Agencia de Turismo Yuntas Ltda.'})
+            .on('click', function(){ window.location.href = "#object-13";})
+            .addTo(map);
+            
+            DG.marker([-33.43851225, -70.6491521], {label : 'Casa Colorada'})
+            .on('click', function(){ window.location.href = "#object-14";})
+            .addTo(map);
+            
+            DG.marker([-33.444633, -70.6517203], {label : 'Edificio Reval'})
+            .on('click', function(){ window.location.href = "#object-15";})
+            .addTo(map);
+            
+            DG.marker([-33.44359855, -70.6524177], {label : 'Banco Estado'})
+            .on('click', function(){ window.location.href = "#object-16";})
+            .addTo(map);
+            
+            DG.marker([-33.4446589, -70.65151185], {label : '&amp;amp;quot;Paseo de los libros&amp;amp;quot;'})
+            .on('click', function(){ window.location.href = "#object-17";})
+            .addTo(map);
+            
+            DG.marker([-33.4426663, -70.6515393], {label : 'Фондовая биржа Сантьяго'})
+            .on('click', function(){ window.location.href = "#object-18";})
+            .addTo(map);
+            
+            DG.marker([-33.4422232, -70.6513998], {label : 'Iglesia de las Agustinas'})
+            .on('click', function(){ window.location.href = "#object-19";})
+            .addTo(map);
+            
+            DG.marker([-33.44148015, -70.65199255], {label : 'Banco Santander'})
+            .on('click', function(){ window.location.href = "#object-20";})
+            .addTo(map);
+            
+            DG.marker([-33.44251385, -70.65121025], {label : 'Edificio Ariztía'})
+            .on('click', function(){ window.location.href = "#object-21";})
+            .addTo(map);
+            
+            DG.marker([-33.4446425, -70.650866], {label : 'Universidad de Chile'})
+            .on('click', function(){ window.location.href = "#object-22";})
+            .addTo(map);
+            
+            DG.marker([-33.44235645, -70.65307755], {label : 'Intendencia Metropolitana'})
+            .on('click', function(){ window.location.href = "#object-23";})
+            .addTo(map);
+            
+            DG.marker([-33.44196815, -70.65303325], {label : 'Ministerio de Justicia (Edificio Seguro Obrero)'})
+            .on('click', function(){ window.location.href = "#object-24";})
+            .addTo(map);
+            
+            DG.marker([-33.4529533, -70.6585814], {label : 'Estación Toesca - L2'})
+            .on('click', function(){ window.location.href = "#object-25";})
+            .addTo(map);
+            
+            DG.marker([-33.461487, -70.65680175], {label : 'Estacion Parque O&#39;Higgins - L2'})
+            .on('click', function(){ window.location.href = "#object-26";})
+            .addTo(map);
+            
+        
+
+
+    });
+</script>
+<!--div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        456
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div-->
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 ligature">
+        <p>Начало пути: Plaza de Armas</p>
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-1"></a>
+        <h2 onclick="window.location.href='#';">Municipalidad de Santiago</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-1">
+            <img src="http://photos.wikimapia.org/p/00/00/50/68/67_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/81_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-1', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-2"></a>
+        <h2 onclick="window.location.href='#';">Estatua a Pedro de Valdivia</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-2">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/82_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-2', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-3"></a>
+        <h2 onclick="window.location.href='#';">Pérgola</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-3">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/73_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-3', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-4"></a>
+        <h2 onclick="window.location.href='#';">Plaza de Armas</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-4">
+            <img src="http://photos.wikimapia.org/p/00/00/74/39/42_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/39/43_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/08/68/88_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/48/85/25_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/70_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-4', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-5"></a>
+        <h2 onclick="window.location.href='#';">Estación Plaza de Armas - Línea 5 / Línea 3</h2>
+        <p>El entorno es el más céntrico de todas la estaciones de la red. En los costados de la Plaza de Armas, en el sentido de las agujas del reloj, están CorreosChile, el Palacio de la Real Audiencia, la Ilustre Municipalidad de Santiago, el portal Fernández Concha y la Catedral de Santiago. Hacia los cuatro puntos cardinales hay un extenso comercio y actividades culturales. Hacia el sur están los concurridos paseos Ahumada, Huerfanos y Estado, los cuales destacan por la gran cantidad de actividad económica y de la presencia de las Grandes tiendas del Retail chileno. Existen también un sinnúmero de edificios públicos y monumentos nacionales, como el ex Congreso Nacional (MN), los Tribunales de Justicia, el edificio del Banco de Chile, entre otros. En la calle Catedral, entre la Plaza de Armas y Morandé está la llamada Pequeña Lima, verdadero enclave de los inmigrantes peruanos que tienen la cuadra atiborrada de restaurantes de su país.</p><p>Próximamente combinación con Línea 3 (Huechuraba - Larraín)</p><p>http://www.metrosantiago.cl</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-5">
+            <img src="http://photos.wikimapia.org/p/00/03/06/82/94_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-5', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-6"></a>
+        <h2 onclick="window.location.href='#';">Portal Fernández Concha</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-6">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/71_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-6', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-7"></a>
+        <h2 onclick="window.location.href='#';">Museo Histórico Nacional</h2>
+        <p>El Museo Histórico Nacional es una institución estatal chilena, dependiente de la Dirección de Bibliotecas, Archivos y Museos, cuya misión es "facilitar a la comunidad nacional, el acceso al conocimiento y recreación de la historia del país, para que se reconozca en ella, a través del acopio, conservación, investigación y difusión del patrimonio tangible e intangible que constituye la memoria histórica de Chile".
+El museo se encuentra instalado desde 1982 en el "Palacio de la Real Audiencia", también denominado "Palacio de la Independencia", en el vereda norte de la Plaza de Armas de Santiago de Chile, que data de 1808.
+El museo posee importantes colecciones histórico-patrimoniales, con objetos y documentos de la Historia de Chile.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-7">
+            <img src="http://photos.wikimapia.org/p/00/00/50/68/61_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/48/85/19_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/48/85/22_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-7', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-8"></a>
+        <h2 onclick="window.location.href='#';">Iglesia de Santo Domingo</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-8">
+            <img src="http://photos.wikimapia.org/p/00/02/48/85/57_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/48/85/67_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-8', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-9"></a>
+        <h2 onclick="window.location.href='#';">Edificio Correos de Chile</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-9">
+            <img src="http://photos.wikimapia.org/p/00/00/50/68/59_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/76_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-9', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-10"></a>
+        <h2 onclick="window.location.href='#';">Banco de Chile</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-10">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/83_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-10', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-11"></a>
+        <h2 onclick="window.location.href='#';">Parroquia del Sagrario</h2>
+        <p>La Parroquia El Sagrario es un templo católico de Santiago de Chile declarado monumento nacional. Forma parte del conjunto arquitectónico-religioso que conforma la fachada poniente de la Plaza de Armas de Santiago, junto a la Catedral Metropolitana de Santiago y el Palacio Arzobispal, ambos Monumentos Nacionales. Es uno de los hitos históricos y arquitectónicos más antiguos de Santiago. Creada como parroquia en 1546, el edificio fue proyectado por el connotado arquitecto Joaquín Toesca y terminado en 1863 por Eusebio Chelli.</p><p>La imagen</p><p>La imagen de la Virgen del Carmen que será entronizada en la Parroquia El Sagrario es de madera policromada. Es de propiedad de la Cofradía Nacional del Carmen, fue encargada a Francia por don José Ramón Ossa en 1833 para uso privado de su familia en Copiapó. En 1865, don Valerio Quesney Ossa la trae a su domicilio en Santiago (Alameda esquina de Lord Cochrane) y la facilita para las procesiones del 16 de julio, en la festividad del Carmen.</p><p>Mientras que en 1873, se inicia la construcción de la iglesia de El Salvador en reemplazo de la iglesia de la Compañía, la Cofradía compra la imagen (1874) y aporta dinero y trabajo para que tuviera un lugar especial en ella. Efectivamente, la imagen estuvo en la Basílica del Salvador desde 1890 hasta 1985 en que por efecto del terremoto, se debió trasladar hasta la Catedral.</p><p>En 1923, los obispos chilenos habían elegido la imagen de la Cofradía para ser coronada Reina y Madre de Chile por el delegado del Papa Pío XI (Monseñor Aloysi Masella), lo que ocurrió el 19 de diciembre de 1926 en el actual Parque O’Higgins ante más de 400.000 fieles.</p><p>Devoción del Carmen</p><p>La devoción a la Virgen del Carmen está muy presente en el pueblo chileno y fue traída en 1595 por los Agustinos, quienes predican intensamente la devoción de Nuestra Señora bajo la advocación del Carmen. En 1643 fundan la Cofradía Nacional del Carmen en Concepción. Cada 16 de julio se realizaban procesiones por el centro de la ciudad. En 1690 llegan las primeras monjas carmelitas a fundar en Chile (Monasterio. Carmen Alto en la actual calle Carmen esquina de Alameda) y en 1760 fundan el Carmen Bajo (actualmente Independencia 229).Estos dos monasterios fortalecen la devoción a Nuestra Señora del Carmen.</p><p>En 1755, don Martín Lacunza manda confeccionar en Quito, una imagen de nuestra Señora del Carmen. Se veneró en su chacra de Ñuñoa y la facilitaba a los Agustinos para las procesiones. En 1945, sus descendientes la donaron al Cardenal José María Caro quien la destinó para el Santuario de Maipú, donde se venera actualmente.</p><p>Durante el siglo XIX, la devoción a Nuestra Señora del Carmen estuvo marcada por las gestas de la Independencia. Con la llegada de los padres Carmelitas en 1899, la devoción se vio nuevamente fortalecida. En 1916 comienza la preparación del centenario del juramento a Nuestra Señora del Carmen lo que concluye en un nuevo juramento de fidelidad que hace todo el país. Esto redunda en la coronación pedida por los Obispos al Papa Pío XI de Nuestra Señora del Carmen como Reina y Madre de Chile.</p><p>En 1943, se inicia la construcción definitiva del Templo Votivo de Maipú que fue inaugurado por el Cardenal Raúl Silva Henríquez el 23 de noviembre de 1974 y concluido en 2002.</p><p>Las manifestaciones más populares de devoción siguen siendo la Novena que se reza a la Virgen del Carmen antes del 16 de julio y la Procesión que desde el año 1971 se realiza el último domingo de Septiembre, día de oración por Chile, expresiones que crecen en número de fieles y en importancia en la vida de la Iglesia.</p><p>
+ Ataque incendiario a la imagen de la Virgen del Carmen  [editar]El 18 de abril de 2008, un vagabundo prendió fuego, de manera intencional, a la imagen de la Virgen del Carmen, prácticamente destruyéndola. Decenas de fieles en las afueras de la iglesia entraron en llanto al enterarse de la noticia. El párroco Francisco Manterola señalo "Quemaron la imagen que fue coronada por el papa Pio XI, la estructura permanece, pero fueron quemados los mantos, ropajes y condecoraciones hechas por las fuerzas armadas y Presidentes".</p><p>Obtenido de "http://es.wikipedia.org/wiki/Parroquia_del_Sagrario"</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-11">
+            <img src="http://photos.wikimapia.org/p/00/00/82/37/14_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-11', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-12"></a>
+        <h2 onclick="window.location.href='#';">Historical Center</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-12">
+            <img src="http://photos.wikimapia.org/p/00/02/55/21/05_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/21/73_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/21/80_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/21/83_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/21/90_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/22/05_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/22/19_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-12', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-13"></a>
+        <h2 onclick="window.location.href='#';">Agencia de Turismo Yuntas Ltda.</h2>
+        <p>Agencia de viajes nacionales e Internacionales, Insentivos, especializados en viajes al Caribe, Cuba y Giras de estudios, esta ultima en forma asociada con Mega Estudiantil.
+Ahumada 370 (oficina 826)</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-14"></a>
+        <h2 onclick="window.location.href='#';">Casa Colorada</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.43745,-70.65029</sup-->
+        
+        <div class="galleria-14">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/66_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/67_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/69_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-14', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-15"></a>
+        <h2 onclick="window.location.href='#';">Edificio Reval</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-15">
+            <img src="http://photos.wikimapia.org/p/00/02/48/98/35_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/52/23_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-15', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-16"></a>
+        <h2 onclick="window.location.href='#';">Banco Estado</h2>
+        <p>Bank of the State of Chile (advertising name: BancoEstado), created legally in 1953.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-16">
+            <img src="http://photos.wikimapia.org/p/00/02/55/52/05_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-16', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-17"></a>
+        <h2 onclick="window.location.href='#';">&amp;amp;quot;Paseo de los libros&amp;amp;quot;</h2>
+        <p>En la década de los 70 el Comité de Desarrollo formado por los libreros situados en la calle San Diego, anteriormente llamada Camino del Inca, fueron ubicados en kioscos y locales por el alcalde de Santiago Ravinet de la Fuente, y formaron lo que hoy es conocido como el “paseo de los libros”. En sus comienzos la vía no era un lugar comercial, y era un camino transitable, sin embargo con el tiempo y la organización del Comité de Desarrollo del barrio Arturo Prat-San Diego, fue derivando a lo que es hoy en día un concurrido comercio para intercambiar, vender o comprar libros -en su mayoría usados.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-17">
+            <img src="http://photos.wikimapia.org/p/00/02/55/20/77_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-17', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-18"></a>
+        <h2 onclick="window.location.href='#';">Фондовая биржа Сантьяго</h2>
+        <p>Фондовая биржа Сантьяго (исп. Bolsa de Comercio de Santiago) — ведущая чилийская торговая площадка. Основана в 1893 году.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-18">
+            <img src="http://photos.wikimapia.org/p/00/00/74/39/41_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/28/81/67_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/54/02/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/87_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-18', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-19"></a>
+        <h2 onclick="window.location.href='#';">Iglesia de las Agustinas</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-19">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/86_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-19', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-20"></a>
+        <h2 onclick="window.location.href='#';">Banco Santander</h2>
+        <p>Banco español que absorbe al Banco Santiago y al Banco O´higgins</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-20">
+            <img src="http://photos.wikimapia.org/p/00/00/26/57/40_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/34/29/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/56/67/69_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/89_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-20', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-21"></a>
+        <h2 onclick="window.location.href='#';">Edificio Ariztía</h2>
+        <p>Edificio de oficinas que data de la primera mitad del siglo XX y se ubica en el corazón del Barrio de la Bolsa en Santiago de Chile. Construído en 1921 y con 52 metros de altura es considerado el primer rascacielos de Santiago</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-22"></a>
+        <h2 onclick="window.location.href='#';">Universidad de Chile</h2>
+        <p>Casa Central de la Universidad de Chile que data desde 1842, Aquí se encuentra el Ballet Folklórico Antumapu, además de la Rectoría, Prorrectoría, Dirección de Comunicaciones, Archivo Central, entre otros.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-22">
+            <img src="http://photos.wikimapia.org/p/00/02/22/58/27_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/55/51/89_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-22', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-23"></a>
+        <h2 onclick="window.location.href='#';">Intendencia Metropolitana</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-23">
+            <img src="http://photos.wikimapia.org/p/00/05/43/05/94_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-23', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-24"></a>
+        <h2 onclick="window.location.href='#';">Ministerio de Justicia (Edificio Seguro Obrero)</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.44433,-70.652</sup-->
+        
+        <div class="galleria-24">
+            <img src="http://photos.wikimapia.org/p/00/05/43/06/01_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/43/06/07_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-24', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-25"></a>
+        <h2 onclick="window.location.href='#';">Estación Toesca - L2</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.45665,-70.6575</sup-->
+        
+        <div class="galleria-25">
+            <img src="http://photos.wikimapia.org/p/00/02/11/14/07_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/06/81/82_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-25', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-26"></a>
+        <h2 onclick="window.location.href='#';">Estacion Parque O&#39;Higgins - L2</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>-33.45665,-70.6575</sup-->
+        
+        <div class="galleria-26">
+            <img src="http://photos.wikimapia.org/p/00/02/11/14/05_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/06/81/80_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-26', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+<div class="pure-g footer">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 footer-text">
+        ПОДЕЛИТЬСЯ
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+</body>
+</html>

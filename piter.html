@@ -1,0 +1,1883 @@
+<!doctype html>
+<html>
+<head>
+    <title>АПИ Сал вам аписал</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script src="./static/jquery.js"></script>
+    <script src="./static/galleria/galleria-1.4.2.min.js"></script>
+    <script>
+        Galleria.loadTheme('./static/galleria/themes/classic/galleria.classic.js');
+    </script>
+    <style>
+        ul {list-style: none; margin: 0}
+        li {margin: 0 10px}
+        .footer {height: 7em; background: darkgreen; color: white}
+        .footer-text {box-sizing: border-box; padding: 2em}
+        .ligature {padding: 20px 0 20px 0; font-size: 3em}
+    </style>
+</head>
+<body>
+<div class="pure-g">
+    <div class="pure-u-1-1">
+        <div id="map" style="width:100%; height:400px; background: darkgreen"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var map;
+    DG.then(function () {
+        map = DG.map('map', {
+            zoom: 6,
+            scrollWheelZoom: false
+        });
+
+        // var point = DG.marker([55.751772, 37.601633]).addTo(map);
+
+        
+            var latlngs = [
+            [59.93936, 30.31533],
+            [59.9385, 30.31205],
+            [59.93788, 30.31004],
+            [59.93706, 30.30815],
+            [59.93616, 30.30566],
+            [59.93543, 30.30446],
+            [59.93437, 30.30424],
+            [59.93315, 30.30587],
+            
+            ];
+
+            var polyline = DG.polyline(latlngs, {color: '#ff5500'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        
+
+        
+            
+            DG.marker([0, 0], {label : ''})
+            .on('click', function(){ window.location.href = "#object-0";})
+            .addTo(map);
+            
+            DG.marker([59.939962, 30.315218], {label : 'Внутри экспозиции'})
+            .on('click', function(){ window.location.href = "#object-1";})
+            .addTo(map);
+            
+            DG.marker([59.9390887, 30.3158041], {label : 'Александровская колонна'})
+            .on('click', function(){ window.location.href = "#object-2";})
+            .addTo(map);
+            
+            DG.marker([59.9394107, 30.31476225], {label : 'Разметка для техники'})
+            .on('click', function(){ window.location.href = "#object-3";})
+            .addTo(map);
+            
+            DG.marker([59.9389046, 30.31481715], {label : 'Дворцовая площадь'})
+            .on('click', function(){ window.location.href = "#object-4";})
+            .addTo(map);
+            
+            DG.marker([59.93984235, 30.31468035], {label : 'Ворота'})
+            .on('click', function(){ window.location.href = "#object-5";})
+            .addTo(map);
+            
+            DG.marker([59.9383638, 30.3160804], {label : 'Здание Главного штаба'})
+            .on('click', function(){ window.location.href = "#object-6";})
+            .addTo(map);
+            
+            DG.marker([59.9380871, 30.3146361], {label : 'Мемориальная доска маршалу М. В. Захарову'})
+            .on('click', function(){ window.location.href = "#object-7";})
+            .addTo(map);
+            
+            DG.marker([59.939907, 30.3140742], {label : 'Кассовые терминалы'})
+            .on('click', function(){ window.location.href = "#object-8";})
+            .addTo(map);
+            
+            DG.marker([59.94085935, 30.3160482], {label : 'Внутри экспозиции'})
+            .on('click', function(){ window.location.href = "#object-9";})
+            .addTo(map);
+            
+            DG.marker([59.94114285, 30.31499685], {label : 'Государственный Эрмитаж'})
+            .on('click', function(){ window.location.href = "#object-10";})
+            .addTo(map);
+            
+            DG.marker([59.93751915, 30.31509335], {label : 'Штаб Западного военного округа'})
+            .on('click', function(){ window.location.href = "#object-11";})
+            .addTo(map);
+            
+            DG.marker([59.9412451, 30.3157747], {label : 'Висячий сад'})
+            .on('click', function(){ window.location.href = "#object-12";})
+            .addTo(map);
+            
+            DG.marker([59.94129875, 30.31567275], {label : 'Малый Эрмитаж'})
+            .on('click', function(){ window.location.href = "#object-13";})
+            .addTo(map);
+            
+            DG.marker([59.94037975, 30.31377915], {label : 'Двор Зимнего дворца'})
+            .on('click', function(){ window.location.href = "#object-14";})
+            .addTo(map);
+            
+            DG.marker([59.94043615, 30.3137764], {label : 'Зимний дворец'})
+            .on('click', function(){ window.location.href = "#object-15";})
+            .addTo(map);
+            
+            DG.marker([59.9404961, 30.31372275], {label : 'Фонтан'})
+            .on('click', function(){ window.location.href = "#object-16";})
+            .addTo(map);
+            
+            DG.marker([59.9370396, 30.3153722], {label : 'Дом П. И. Перкина / Дом О. Э. Веймара'})
+            .on('click', function(){ window.location.href = "#object-17";})
+            .addTo(map);
+            
+            DG.marker([59.9371491, 30.31455685], {label : 'Дом А. Г. Губкина / Дом Таля'})
+            .on('click', function(){ window.location.href = "#object-18";})
+            .addTo(map);
+            
+            DG.marker([59.93699255, 30.31579075], {label : 'Здание банка И. В. Юнкер и К'})
+            .on('click', function(){ window.location.href = "#object-19";})
+            .addTo(map);
+            
+            DG.marker([59.9369288, 30.3149673], {label : 'Дом И. И. Перкина / Дом Сафоновых'})
+            .on('click', function(){ window.location.href = "#object-20";})
+            .addTo(map);
+            
+            DG.marker([59.94065855, 30.3172405], {label : 'Бывший жилой дом Штаба гвардейского корпуса'})
+            .on('click', function(){ window.location.href = "#object-21";})
+            .addTo(map);
+            
+            DG.marker([59.9390068, 30.31313385], {label : 'Общественный туалет'})
+            .on('click', function(){ window.location.href = "#object-22";})
+            .addTo(map);
+            
+            DG.marker([59.94192435, 30.3157625], {label : 'Внутри экспозиции'})
+            .on('click', function(){ window.location.href = "#object-23";})
+            .addTo(map);
+            
+            DG.marker([59.94193635, 30.3157948], {label : 'Внутри экспозиции'})
+            .on('click', function(){ window.location.href = "#object-24";})
+            .addTo(map);
+            
+            DG.marker([59.9419477, 30.3158256], {label : 'Внутри экспозиции'})
+            .on('click', function(){ window.location.href = "#object-25";})
+            .addTo(map);
+            
+            DG.marker([59.94195965, 30.3158577], {label : 'Внутри экспозиции'})
+            .on('click', function(){ window.location.href = "#object-26";})
+            .addTo(map);
+            
+            DG.marker([59.9359499, 30.30554605], {label : 'Скульптура «Геракл Фарнезский»'})
+            .on('click', function(){ window.location.href = "#object-27";})
+            .addTo(map);
+            
+            DG.marker([59.9360521, 30.30501635], {label : 'Детская площадка'})
+            .on('click', function(){ window.location.href = "#object-28";})
+            .addTo(map);
+            
+            DG.marker([59.93652545, 30.30661355], {label : 'Мортиры'})
+            .on('click', function(){ window.location.href = "#object-29";})
+            .addTo(map);
+            
+            DG.marker([59.9352713, 30.30646865], {label : 'Памятник садово-паркового искусства'})
+            .on('click', function(){ window.location.href = "#object-30";})
+            .addTo(map);
+            
+            DG.marker([59.93533335, 30.3066035], {label : 'Платный туалет'})
+            .on('click', function(){ window.location.href = "#object-31";})
+            .addTo(map);
+            
+            DG.marker([59.9379023, 30.3058156], {label : 'Здания Государственного Дворянского земельного и Крестьянского поземельного банков'})
+            .on('click', function(){ window.location.href = "#object-32";})
+            .addTo(map);
+            
+            DG.marker([59.9364222, 30.30734315], {label : 'Александровский сад'})
+            .on('click', function(){ window.location.href = "#object-33";})
+            .addTo(map);
+            
+            DG.marker([59.9360185, 30.307492], {label : 'Памятник Н. М. Пржевальскому'})
+            .on('click', function(){ window.location.href = "#object-34";})
+            .addTo(map);
+            
+            DG.marker([59.9340993, 30.306167], {label : 'Исаакиевский собор'})
+            .on('click', function(){ window.location.href = "#object-35";})
+            .addTo(map);
+            
+            DG.marker([59.9340196, 30.30549925], {label : 'Лестница'})
+            .on('click', function(){ window.location.href = "#object-36";})
+            .addTo(map);
+            
+            DG.marker([59.9380649, 30.30661495], {label : 'Арка между домами №№ 7 и 9 '})
+            .on('click', function(){ window.location.href = "#object-37";})
+            .addTo(map);
+            
+            DG.marker([59.93387785, 30.30531005], {label : 'Мемориальные следы от снаряда'})
+            .on('click', function(){ window.location.href = "#object-38";})
+            .addTo(map);
+            
+            DG.marker([59.9340143, 30.3065018], {label : 'Лестница'})
+            .on('click', function(){ window.location.href = "#object-39";})
+            .addTo(map);
+            
+            DG.marker([59.93829995, 30.3065479], {label : 'Доходный дом О. Н. Рукавишниковой'})
+            .on('click', function(){ window.location.href = "#object-40";})
+            .addTo(map);
+            
+            DG.marker([59.93492735, 30.30754025], {label : 'Дом кн. А. Я. Лобанова-Ростовского - Здание Военного министерства'})
+            .on('click', function(){ window.location.href = "#object-41";})
+            .addTo(map);
+            
+            DG.marker([59.93861195, 30.30613815], {label : 'Адмиралтейский сад'})
+            .on('click', function(){ window.location.href = "#object-42";})
+            .addTo(map);
+            
+            DG.marker([59.93494615, 30.3036385], {label : 'Туалет'})
+            .on('click', function(){ window.location.href = "#object-43";})
+            .addTo(map);
+            
+            DG.marker([59.93900525, 30.30630915], {label : 'Причал'})
+            .on('click', function(){ window.location.href = "#object-44";})
+            .addTo(map);
+            
+            DG.marker([59.93381335, 30.30404805], {label : 'Особняк Ф. Л. Миллера'})
+            .on('click', function(){ window.location.href = "#object-45";})
+            .addTo(map);
+            
+            DG.marker([59.93804195, 30.30770125], {label : 'Здесь был Адмиралтейский ров'})
+            .on('click', function(){ window.location.href = "#object-46";})
+            .addTo(map);
+            
+            DG.marker([59.93805935, 30.3077038], {label : 'Бизнес-центр &amp;amp;quot;Черноморский, 4&amp;amp;quot;'})
+            .on('click', function(){ window.location.href = "#object-47";})
+            .addTo(map);
+            
+            DG.marker([59.93748435, 30.303293], {label : 'Порфировые вазы'})
+            .on('click', function(){ window.location.href = "#object-48";})
+            .addTo(map);
+            
+            DG.marker([59.93430835, 30.3035574], {label : 'Статуи Диоскуров'})
+            .on('click', function(){ window.location.href = "#object-49";})
+            .addTo(map);
+            
+        
+
+
+    });
+</script>
+<!--div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        456
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div-->
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 ligature">
+        <p>Начало пути: Дворцовая площадь</p>
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-1"></a>
+        <h2 onclick="window.location.href='#';">Внутри экспозиции</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-1">
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/27_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/28_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/29_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/30_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/33_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/35_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/36_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-1', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-2"></a>
+        <h2 onclick="window.location.href='#';">Александровская колонна</h2>
+        <p>Возведена в 1830-1834 году на Дворцовой площади архитектором Огюстом Монферраном по указу императора Николая I в память о победе его старшего брата Александра I над Наполеоном 1812-1814 гг.  Колоссальный гранитный монолит высотой 25,6 метра весит свыше 600 тонн. Венчающая колонну фигура ангела, лицо которого имеет черты Александра I, выполнена скульптором Б.И. Орловским. Общая высота сооружения - 47,5 метров. Декоративные фонари у колонны выполнены в 1876 году архитектором К.К. Рахау В итоге колонна высотой 47,5 м стала выше всех аналогичных монументов мира: Вандомской колонны в Париже, колонны Траяна в Риме и колонны Помпея в Александрии. Диаметр столпа - 3,66 м.
+http://www.yaplakal.com/forum2/topic1216001.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-2">
+            <img src="http://photos.wikimapia.org/p/00/00/57/01/73_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/81/39/34_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/81/39/37_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/81/37/71_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/81/37/69_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/89/61/12_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/78/29/18_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-2', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-3"></a>
+        <h2 onclick="window.location.href='#';">Разметка для техники</h2>
+        <p>Нанесена для парада 9.5.2008.
+На фото: 
+1)Мимо трибуны с вождями местного значения проходят танки Т-26(выпускались с 1931 по 1941, пушка 45 мм, два пулемета,скорость 30 км/ч, броня 15 мм).Самый массовый танк в начале Великой Отечественной войны. Фото парада 1938 г.</p><p>2) Танки Т-34-85 перед парадом. Ленинград, 7 ноября 1945 года.</p><p>3) Парад 2008 года. ОТРК-Ока (оперативно-тактический ракетный комплекс)</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-3">
+            <img src="http://photos.wikimapia.org/p/00/00/64/78/61_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/64/78/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/65/66/27_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/84/45/43_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/60/28/34_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/46/22_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/11/71/85_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-3', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-4"></a>
+        <h2 onclick="window.location.href='#';">Дворцовая площадь</h2>
+        <p>Главная площадь Санкт-Петербурга, в 1918–44 гг. — Площадь Урицкого.</p><p>Традиционное место проведения общегородских торжеств. Входит в систему центральных площадей левобережья Невы. Названа по Зимнему дворцу, южный фасад которого выходит на площадь. Площадь 8 га. Первоначально — часть Адмиралтейского луга, ограниченная с запада бастионами Адмиралтейской крепости, с востока — Луговой (Миллионной) улицей. Южная граница Дворцовой площади в 1765 г. получила полуциркульное в плане очертание (арх. А.В. Квасов), по ее периметру в 1779–84 гг. построены четыре дома (арх. Ю. М. Фельтен). В 1819–29 гг. площадь полностью реконструирована по проекту арх. К. И. Росси и стала памятником градостроительного искусства мирового значения. Росси ограничил пространство площади с юга двумя зданиями: Главного штаба с Военным министерством (с использованием старых построек) и Министерства финансов с Министерством иностранных дел. Длина их общего полуциркульного фасада — 580 м. Здания соединяет арка Главного штаба высотой 28 м, увенчанная колесницей Победы (скульп. С.С. Пименов, В.И. Демут-Малиновский), чей излом соответствует направлению Большой Морской улицы и создает неожиданный эффект при входе на Дворцовую площадь со стороны Невского проспекта. Строгие формы архитектуры ампира оттеняют великолепие барокко Зимнего дворца, не вступая в контраст, объединенные масштабом и ритмом архитектурных членений. В центре площади в 1834 г. открыта Александровская колонна, внесшая в ансамбль заключительный монументальный аккорд. На восточной стороне площади на месте Экзерциргауза (1797–98 гг., арх. В. Бренна) построено в формах позднего классицизма здание Штаба Гвардейского корпуса (1837–43 гг., арх. А.П. Брюллов). На углу Невского проспекта к зданию Главного штаба примыкает корпус Военно-топографического депо (1845–46 гг., арх. И.Д. Черник). В XIX — начале XX вв. Дворцовая площадь была местом военных смотров и парадов. С ней связаны трагические события «Кровавого воскресенья» 9 января 1905 г., на ней император Николай II объявил о начале войны с Германией 19 июля 1914 г. После октября 1917 г. здесь проходили военные парады и демонстрации. В 1977 г. центральная часть площади замощена брусчаткой. 20 августа 1991 г. на Дворцовой площади прошел стихийный митинг (100 тыс. участников) в знак протеста против действий ГКЧП. К 300-летию Санкт-Петербурга осуществлено комплексное благоустройство площади.</p><p>http://www.encspb.ru/article.php?kod=2804005093</p><p>http://www.youtube.com/watch?v=6pO67B5MA9o
+http://www.youtube.com/watch?v=iSfwPmuCEd0</p><p>http://maps.yandex.ru/-/CFEIUhr</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-4">
+            <img src="http://photos.wikimapia.org/p/00/00/74/26/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/99/30/57_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/82/77/25_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/15/46/95_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/38/44/02_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/34/53/97_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/69/33_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-4', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-5"></a>
+        <h2 onclick="window.location.href='#';">Ворота</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-5">
+            <img src="http://photos.wikimapia.org/p/00/01/27/27/97_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/45/42/55_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/45/42/56_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/45/43/21_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/48/33/66_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/92/44/40_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/40/46/46_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-5', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-6"></a>
+        <h2 onclick="window.location.href='#';">Здание Главного штаба</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-6">
+            <img src="http://photos.wikimapia.org/p/00/00/04/38/19_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/58/35/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/81/39/60_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/81/39/52_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/26/85_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/43/87/81_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/43/87/83_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-6', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-7"></a>
+        <h2 onclick="window.location.href='#';">Мемориальная доска маршалу М. В. Захарову</h2>
+        <p>Текст: "В этом здании работал Маршал Советского Союза Захаров Матвей Васильевич в должностях начальника штаба  (1937-1938 г.г.) и командующего войсками Ленинградского военного округа (1953-1957 г.г.)"</p><p>http://lenww2.ru/index.php/region00/area38?id=1840
+http://www.warheroes.ru/hero/hero.asp?Hero_id=684</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-8"></a>
+        <h2 onclick="window.location.href='#';">Кассовые терминалы</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-8">
+            <img src="http://photos.wikimapia.org/p/00/04/68/01/53_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/68/01/54_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/68/01/56_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/68/01/58_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-8', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-9"></a>
+        <h2 onclick="window.location.href='#';">Внутри экспозиции</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-9">
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/12_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/13_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/17_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/18_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/19_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/21_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-9', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-10"></a>
+        <h2 onclick="window.location.href='#';">Государственный Эрмитаж</h2>
+        <p>Главный музейный комплекс Государственного Эрмитажа занимает шесть величественных зданий, расположенных вдоль набережной Невы в самом центре Санкт-Петербурга и соединённых друг с другом переходами: Зимний дворец, Малый Эрмитаж, Большой (Старый) Эрмитаж, Новый Эрмитаж, Эрмитажный театр и Дворец великого князя Алексея Александровича (Запасной дом Зимнего дворца). Ведущее место в этом неповторимом архитектурном ансамбле, сложившемся в XVIII-XIX веках, занимает Зимний дворец - резиденция русских царей, построенная в 1754-1762 годах по проекту Ф. Б. Растрелли.</p><p>В музейный комплекс входят также восточное крыло здания Главного штаба, Меншиковский дворец, музей Императорского фарфорового завода и недавно построенный Реставрационно-хранительский центр «Старая деревня».</p><p>Почти за два с половиной столетия в Эрмитаже собрана одна из крупнейших коллекций, насчитывающая около трёх миллионов произведений искусства и памятников мировой культуры, начиная с каменного века и до нашего столетия. Сегодня, при помощи современных технологий, музей создает свой цифровой автопортрет, который смогут увидеть во всем мире. </p><p>http://www.hermitagemuseum.org</p><p>http://www.youtube.com/watch?v=F_tHJVii98o</p><p>http://www.youtube.com/watch?v=2EV6ha2M814</p><p>Фильм "Русский ковчег" (2002) был снят здесь.
+http://www.youtube.com/watch?v=2WSTTKHTpps</p><p>Бесплатный путеводитель по Эрмитажу: http://www.spb-guide.ru/page_493.htm</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-10">
+            <img src="http://photos.wikimapia.org/p/00/00/03/79/75_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/02/80_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/02/87_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/26/92_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/88/34/50_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/97/80/71_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/97/72/64_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-10', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-11"></a>
+        <h2 onclick="window.location.href='#';">Штаб Западного военного округа</h2>
+        <p>ЗВО - Штаб Западного военного округа.
+(до 20.IX.2010 Штаб Ленинградского военного округа)
+Командующий генерал-полковник Аркадий Бахин.</p><p>http://www.mil.ru/848/1045/1272/1365/1363/index.shtml</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-11">
+            <img src="http://photos.wikimapia.org/p/00/00/58/00/38_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/58/83/68_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/58/83/67_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/43/87/87_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/45/54/41_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/45/54/50_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/43/07/56_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-11', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-12"></a>
+        <h2 onclick="window.location.href='#';">Висячий сад</h2>
+        <p>Это было место для уединённых прогулок Екатерины II. В 1850-е гг здесь решили устроить оранжерею.</p><p>Висячий сад - архитектурное сооружение, характерное для дворцовых ансамблей XVIII в. Он расположен на уровне второго этажа, над помещениями бывших царских конюшен и каретных сараев, и занимает пространство между галереями, соединяющими Северный и Южный павильоны Малого Эрмитажа. Центральная аллея сада украшена декоративной скульптурой. У Северного павильона разбит партерный цветник с мраморным фонтаном. Вокруг фонтана размещены статуи. В середине XIX в. здесь под стеклянным шатровым перекрытием был устроен Зимний сад. У стен галерей сооружены деревянные беседки-голубятни.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-12">
+            <img src="http://photos.wikimapia.org/p/00/00/70/52/73_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/70/52/79_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/85/31/18_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/48/16/06_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/78/38/81_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/41/16/05_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/58/80/08_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-12', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-13"></a>
+        <h2 onclick="window.location.href='#';">Малый Эрмитаж</h2>
+        <p>Малый Эрмитаж был создан по проекту Ж.-Б. Вален-Деламота рядом с Зимним дворцом. Однако "уголок" оказался не таким уж маленьким: в нем хватило места и для парадных комнат, в которых Екатерина принимала гостей, и для отдельного крыла, где жили ее фавориты, и даже для висячего сада, из-за которого новый павильон и получил свое первоначальное название - Оранжерейный дом.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-13">
+            <img src="http://photos.wikimapia.org/p/00/00/59/07/61_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/76/68/58_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/11/75/10_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/08/64/42_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/69/84/53_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/45/65/43_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-13', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-14"></a>
+        <h2 onclick="window.location.href='#';">Двор Зимнего дворца</h2>
+        <p>Здание восемь раз меняло цвет своих стен. Зимний дворец красили в красный, розовый, жёлтый цвета. Перед первой мировой войной Зимний дворец перекрасили в красно-кирпичный цвет. Именно на таком фоне и происходили события 1917 года</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-14">
+            <img src="http://photos.wikimapia.org/p/00/00/57/45/83_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/37/27_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/84/10/59_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/44/20/17_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/27/54/20_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/27/54/22_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/27/54/23_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-14', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-15"></a>
+        <h2 onclick="window.location.href='#';">Зимний дворец</h2>
+        <p>Памятник архитектуры русского барокко. Построен в 1754–62 гг. итальянским архитектором Ф. Б. Растрелли.
+С 1762 г. до 2 марта 1917 г. — официальная резиденция Российских Императоров. С июля по ноябрь 1917 г. служил местом проведения заседаний Временного правительства.
+Всего за период 1711–54 гг. в городе возводилось пять зимних дворцов. Первый «Зимний дом» для Петра I был построен в 1711 г. на берегу Зимней канавки, второй — в 1716–19 гг. на месте современного Эрмитажного театра архитектором Г. И. Маттарнови (перестроен в 1720-х гг. архитектором Д. Трезини). В 1732 г. Ф. Б. Растрелли начал постройку третьего Зимнего дворца с фасадами на Неву и Дворцовую площадь, который также неоднократно перестраивался. Четвёртый, временный, деревянный Зимний дворец был построен Растрелли в 1755 г. на углу Невского проспекта и набережной р. Мойки (уничтожен в 1762 г.). Существующий пятый Зимний дворец построен им же в 1754–62 гг. (на месте демонтированного третьего и двух соседних по набережной зданий) в стиле барокко.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-15">
+            <img src="http://photos.wikimapia.org/p/00/00/81/39/66_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/84/10/56_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/02/61_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/36/48/01_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/78/29/80_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/69/23_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/69/28_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-15', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-16"></a>
+        <h2 onclick="window.location.href='#';">Фонтан</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-16">
+            <img src="http://photos.wikimapia.org/p/00/01/27/28/01_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/36/38/10_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/07/18/02_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/41/15/87_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/78/71/33_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-16', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-17"></a>
+        <h2 onclick="window.location.href='#';">Дом П. И. Перкина / Дом О. Э. Веймара</h2>
+        <p>1760-е гг. - арх. Квасов А. В. (?)
+1835 г. - ах. Е. Ф. Паскаль - надстройка и раширение флигелей.
+Дом был построен в 1760-х гг., вероятно, по проекту А. В. Квасова для иностранного купца П. И. Перкина. Дом сохранил первоначальный классический облик, только черепичная крыша заменена железной.
+С 1866 г. домом владел доктор О. Э. Веймар.</p><p>http://www.citywalls.ru</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-17">
+            <img src="http://photos.wikimapia.org/p/00/01/51/52/32_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/17/12/00_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/92/73/02_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/44/43_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/95/56/19_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/25_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-17', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-18"></a>
+        <h2 onclick="window.location.href='#';">Дом А. Г. Губкина / Дом Таля</h2>
+        <p>Четырехэтажный дом построен в 1770-е гг. для калужского купца А. Г. Губкина. Около 1830 г. по проекту арх. Ливена А. М. была изменена отделка фасада в стиле позднего классицизма, надстроен пятый этаж.</p><p>http://www.citywalls.ru</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-18">
+            <img src="http://photos.wikimapia.org/p/00/01/50/62/48_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/46/06_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/46/07_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/44_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-18', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-19"></a>
+        <h2 onclick="window.location.href='#';">Здание банка И. В. Юнкер и К</h2>
+        <p>Годы постройки:	1910-1911
+Архитекторы:	ван ден Гюхт В. И.</p><p> Первый дом здесь был построен в 1760-х годах для жены полковника Толстого. В 1777 году она продала дом портному Карлу Фридриху Гейдеману, а тот в 1782 году - генерал-поручику А. Д. Ланскому, фавориту Екатерины II. Ланской умер через два года. У его наследников в 1786 году дом купил князь А. Я. Шаховской.
+В первой половине XIX века здание принадлежало богатой греческой семье Калержи. В 1839 году Иван Калержи подарил дом своей жене Марии, племяннице вице-канцлера К. В. Несельроде. Здесь она прожила совсем недолго, уехала в Париж. В память о ней Ф. Лист написал "Элегию". В 1819-1822 годах верхний этаж снимал военный губернатор Петербурга граф М. А. Милорадович. Весной 1820 года он вызывал к себе в этот дом А. С. Пушкина в связи с распространением его вольнолюбивых и фривольных стихов. В 1870-х годах в доме №12 по Невскому проспекту находилась банкирская контора А. Зингера, затем фотоателье придворного фотографа К.Бергамаско. 
+ В 1910-1911 годах по проекту архитектора В. И. Ван ден Гюхта дом №12 был полностью перестроен. Владельцем нового здания стал банк "И. В. Юнкер и К". Банк был основан в Москве в 1818 году. В начале XX века появился петербургский филиал, который до переезда сюда размещался в доме №22 по Невскому проспекту. Новое банковское здание облицовано красным гранитом. Соответствующие работы выполняло Восточно-Финляндское гранитное акционерное общество (г. Выборг) и конторой инженера А. И. Гури.
+В годы Первой мировой войны контрольный пакет акций банка выкупил финансист Д. Л. Рубинштейн. После его ареста (в 1916 году) учреждение перешло Московскому промышленному банку.
+В 1920-х годах в доме №12 располагались конторы и магазины "Ленинградтекстиля".
+В 1992 году здание передано в аренду банку "Лионский кредит".</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-19">
+            <img src="http://photos.wikimapia.org/p/00/02/73/63/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/46/15_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/95/56/18_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/10_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/11_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/12_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-19', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-20"></a>
+        <h2 onclick="window.location.href='#';">Дом И. И. Перкина / Дом Сафоновых</h2>
+        <p>Четырехэтажный дом построен в 1760-х гг. для нотариуса И. И. Перкина, вероятно, по проекту арх. А. В. Квасова. Фасад оформлен в стиле раннего классицизма.
+С 1775 г. владельцами были олонецкие купцы Сафоновы. В это время в доме размещался немецкий кукольный театр.
+ 
+В 1830-х гг. проведена частичная перестройка. Дом приобрел черты позднего классицизма.
+Фриз дома заполнен барельефами грифонов.
+В 1860-х гг. в доме разместился магазин чугунных изделий завода Ф. К. Сан-Галли.</p><p>Здание включено в Единый государственный реестр объектов культурного наследия (памятников истории и культуры) народов Российской Федерации в качестве объекта культурного наследия регионального значения.</p><p>http://www.citywalls.ru</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-20">
+            <img src="http://photos.wikimapia.org/p/00/01/51/52/10_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/31/66/01_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/46/12_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/37_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/33/98/38_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-20', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-21"></a>
+        <h2 onclick="window.location.href='#';">Бывший жилой дом Штаба гвардейского корпуса</h2>
+        <p>Архитекторы:
+Покотилов Д. В.
+Год постройки: 	1880
+Стиль:Неоренессанс</p><p>В XVIII веке на месте дома № 38 находился почтовый двор. Вступив на престол, Павел I приказал снести здание почтамта и построить на его месте манеж.</p><p>http://www.citywalls.ru/house3553.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-21">
+            <img src="http://photos.wikimapia.org/p/00/00/65/92/04_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/80/44/38_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/38/44/50_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/02/74/41_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/86/00/34_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-21', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-22"></a>
+        <h2 onclick="window.location.href='#';">Общественный туалет</h2>
+        <p>На главной площади города находится платный туалет в виде вагона. Позор культурной столицы.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-22">
+            <img src="http://photos.wikimapia.org/p/00/04/86/50/89_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-22', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-23"></a>
+        <h2 onclick="window.location.href='#';">Внутри экспозиции</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-23">
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/99_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/08/00_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/08/01_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/08/02_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/08/03_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/08/11_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/08/12_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-23', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-24"></a>
+        <h2 onclick="window.location.href='#';">Внутри экспозиции</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-24">
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/45_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/46_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/47_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/48_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/49_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/50_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/51_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-24', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-25"></a>
+        <h2 onclick="window.location.href='#';">Внутри экспозиции</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-25">
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/79_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/81_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/82_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/84_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/85_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/87_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/88_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-25', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-26"></a>
+        <h2 onclick="window.location.href='#';">Внутри экспозиции</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93936,30.31533</sup-->
+        
+        <div class="galleria-26">
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/62_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/64_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/65_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/66_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/68_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/56/07/69_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-26', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-27"></a>
+        <h2 onclick="window.location.href='#';">Скульптура «Геракл Фарнезский»</h2>
+        <p>1833году в Александровском парке появился новый житель, могущественный вид которого до сей пары радует глаз любого прогуливающегося на повороте Адмиралтейского проезда. Он был перевезен из Таврического дворца и является скульптурной копией со скульптуры П. Трискорни - Геракла Фарнезского. Если в древности статуя пользовалась успехом у римлян, которые считали за честь украсить ей свой дворец или гимнастический зал, то в 16 веках гравюрами пестрили знатные дома, так общество знакомилось с выдающимся искусством. </p><p>Дворец Палаццо Фарнезе был излюбленным местом историков, путешественников, художников, ведь именно там стоял Геракл под прикрытием аркады.
+В 17 веках копии статуи выдающегося мастера украсили парки Европы. В Эрмитаже Санкт-Петербурга есть Мраморная копия Геркулеса Фарнезского, созданного итальянским скульптором 18 века. Именно с нее выполнены несколько копий, украшающих различные места Санкт-Петербурга, одна из которых статуя из белого мрамора, замыкающая большую продольную аллею Александровского сада перед Адмиралтейством.</p><p>Уже два века статуя Гераклу Фарнезскому является молчаливым хранителем сада. Теперь любой может наслаждаться его красотами, а ведь в начале открытия сада, памятник был скрыт от глаз простого люда. Простолюдины могли только слышать о его могущественной красе, наблюдать сквозь прутья решетки. А видели его в то время только господа. Это обсуждали даже местные газеты, выражая свое сожаление данным фактом.
+http://www.petergid.ru/mesta/gerakl-v-aleksandrovskom-sadu-2900.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-27">
+            <img src="http://photos.wikimapia.org/p/00/00/58/86/96_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/53/78/73_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/73/01_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-27', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-28"></a>
+        <h2 onclick="window.location.href='#';">Детская площадка</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-28">
+            <img src="http://photos.wikimapia.org/p/00/04/87/73/16_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/87/73/55_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-28', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-29"></a>
+        <h2 onclick="window.location.href='#';">Мортиры</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-29">
+            <img src="http://photos.wikimapia.org/p/00/02/51/03/20_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-29', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-30"></a>
+        <h2 onclick="window.location.href='#';">Памятник садово-паркового искусства</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-30">
+            <img src="http://photos.wikimapia.org/p/00/04/96/21/65_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/96/21/66_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-30', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-31"></a>
+        <h2 onclick="window.location.href='#';">Платный туалет</h2>
+        <p>Построен в начале XX века архитектором А.И. Зазерским. Аналогичные павильоны были построены на Театральной площади, Александровском саду Петроградской стороны. После 22 часов не работает.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-31">
+            <img src="http://photos.wikimapia.org/p/00/00/78/66/25_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/78/66/23_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/40/46/42_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/96/21/54_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-31', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-32"></a>
+        <h2 onclick="window.location.href='#';">Здания Государственного Дворянского земельного и Крестьянского поземельного банков</h2>
+        <p>Адмиралтейская наб., 12-14
+Керченский пер., 1х
+Архитекторы:
+Бенуа Н. Л.
+Иванов А. В.
+Тарасов К. К.
+Год постройки: 	1877-1880, 1881</p><p>Дома № 12 и 14 перестроены в единый ансамбль в 1912-1913 архитекторы А. В. Друкер, К. К. Тарасов - до 1917 года здания Дворянского банка и Крестьянского банка.</p><p>
+1877-1880, строительство здания Общества взаимного поземельного кредита (N 14) - архитекторы Н.Л.Бенуа, А.И.Кракау.</p><p>1880-1881, строительство дома А.Ф.Паулуччи (N 12) - арх. А.В.Иванов.</p><p>1912, приспособление под банк, изменение фасада дома N 12 по образцу дома N 14, устройство крытого перехода к дому N 10 - техн. А.В.Друкер, гражд. инж. К.К.Тарасов
+http://www.citywalls.ru/house5105.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-32">
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/95_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/96_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/97_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/85/74/80_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/85/74/79_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/16/23/99_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/94/66/43_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-32', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-33"></a>
+        <h2 onclick="window.location.href='#';">Александровский сад</h2>
+        <p>Адмиралтейский сад.
+До 1918 Александровский сад, до 1989 Сад трудящихся имени М. Горького)
+Площадь 10 га.
+До 1806 на месте сада находились укрепления Адмиралтейской крепости, после их ликвидации возникла Адмиралтейская площадь, в конце 1810-х гг.вдоль фасада главного Адмиралтейства разбит бульвар (в первой половине XIX в. модное место прогулок петербургской аристократии. В 1833 по углам центральной аллеи бульвара установлены скульптуры Геракл Фарнезский и Флора Фарнезская (копии XVIII в. с античных скульптур; взяты из Таврического дворца. В 1872—74 по проекту ботаника и садовода Э. Л. Регеля на территории площади разбит сад, названный Александровским (начало работ приурочено к празднованию 200-летия со дня рождения Петра I)В 1876—80 в центре сада, против башни главного Адмиралтейства, сооружён фонтан(городской архитектор Л. Р. Гешвенд).В1887 в саду на участке, примыкающем к Дворцовой площади, открыт бюст 
+В.А.Жуковского, в 1892 в противоположной стороне — памятник Н.М.Пржевальскому,
+в 1896 на площадке у фонтана — бюсты Н.В.Гоголя и М.Ю.Лермонтова,в 1899 бюст М.И.Глинки.
+В 1950-х годах происходила капитальная реконструкция Александровского сада. В 1959 году в его юго-западной части установили бетонный цветник с двумя бассейнами и розарий. В 1970-х годах старое деревянное ограждение заменили на гранитный парапет. 
+В 1996 году к 300-летию Российского флота предлагалось открыть здесь Адмиральскую аллею с бюстами 20 адмиралов. От этого проекта городские власти отказались. В 1997 году саду было возвращено прежнее имя — Александровский сад. 16 октября 1998 года у фонтана был открыт бюст князя Александра Михайловича Горчакова, что приурочили к 200-летию с его дня рождения. 
+http://walkspb.ru/sad/aleksandr_sad.html</p><p>http://www.youtube.com/watch?v=xFOBOjGeArc&feature=related</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-33">
+            <img src="http://photos.wikimapia.org/p/00/00/04/02/36_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/78/66/26_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/94/90_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/94/91_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/94/92_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/02/56/21_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/78/30/78_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-33', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-34"></a>
+        <h2 onclick="window.location.href='#';">Памятник Н. М. Пржевальскому</h2>
+        <p>Памятник сооружён в 1892 году. Скульпторы И.Н. Шредер и Р.И. Рунеберг, эскиз А.А. Бильдерлинга (автор). Памятник установлен Императорским географическим обществом в Александровском саду у Адмиралтейства.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-34">
+            <img src="http://photos.wikimapia.org/p/00/00/55/57/65_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/55/57/70_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/60/95/84_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/60/39/90_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/13/08/14_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/34/72/81_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/65/76/76_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-34', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-35"></a>
+        <h2 onclick="window.location.href='#';">Исаакиевский собор</h2>
+        <p>1818-1858; 1947-1951, 1954-1963 (реставрация) 
+Автор: инж. Бетанкур А.; ск. Витали И.П.; ск. Герман И.; ск. Клодт П.К.; ск. Лемер А.; ск. Логановский А.В.; арх. Монферран О.</p><p>Крупнейший православный храм Санкт-Петербурга. Высота храма по кончику шпиля 101,5 метров.</p><p>Назван в честь Исаакия Далматского, почитаемого Петром I святого, так как император родился в день памяти святого (30 мая по с. с.). Построен в 1818—1858 гг. по проекту архитектора Огюста Монферрана. Строительство лично курировал император Николай I. Открытие состоялось только 30 мая (11 июня) 1858 года, собор был освящён как кафедральный.</p><p>Вход платный - 200 руб., на колоннаду - 100 руб. К сожалению, всем, кто захочет попасть на службу в храм, придется заплатить за вход как за экскурсию. Странно...</p><p>Фото Исаакиевского собора:
+http://al-spbphoto.narod.ru/Hram/isaaky.html
+http://www.spb-guide.ru/page_7957.htm
+https://fotki.yandex.ru/next/users/genar-58/album/2961/view/771525
+Виды с колоннады собора: http://www.spb-guide.ru/page_7957.htm</p><p>Стоимость билетов и режим работы: http://www.spb-guide.ru/page_5480.htm</p><p>В 1710 г. на Адмиралтейском лугу была построена небольшая деревянная церковь - первый собор св. Исаакия Далматского - византийского монаха, день празднования которого совпадал с днем рождения Петра I.  В 1712 г. в ней состоялось венчание Петра I и Екатерины. В храме принимали присягу все чины Адмиралтейства и моряки Балтийского флота.
+Вторая каменная Исаакиевская церковь с многоярусной колокольней по проекту арх. Г. Матарнови была возведена на берегу Невы.
+В 1762 г. арх. С. И. Чевакинский разработал проект постройки собора в центре вновь созданной площади.
+Третий Исаакиевский собор был заложен в 1768 г. по проекту Антонио Ринальди. Во внешней и внутренней отделке предполагалось использовать сибирский и олонецкий мрамор. Строительство шло медленно. Завершил затянувшуюся стройку с изменением проекта арх. В. Бренна в 1802 г.
+В храме проводились богослужения в честь 100-летия основания Санкт-Петербурга. Со времнем храм обветшал.</p><p>Конкурс на разработку проекта нового собора состоялся в первом десятилетии XIX в., но из-за войны 1812-1814 гг. был отложен. В 1818 г. Александр I утвердил проект О. Монферрана. Долгое время шла доработка проекта.
+В 1828 г. еще до возведения стен началась установка 48 монолитных гранитных колонн портиков, каждая весом 110 тонн.
+Строительство собора завершилось в 1842 г., внутренняя отделка - в 1858 г.</p><p>Со времени своего освящения этот храм стал центром общегородских празднеств.
+В соборе хранились  драгоценные святыни - Крест с Животворящим Древом Господним и значительная часть мощей св. апостола Андрея Первозванного, Нерукотворный образ Спасителя, Тихвинская икона Богоматери.</p><p>Внушительное здание собора оформлено четырьмя портиками с колоннами коринфского ордера. Плоскости стен прорезаны большими арочными окнами. Углы украшены пилястрами. По сторонам установлены четыре колокольни. Собор завершается высоким барабаном, увенчанным золоченым куполом с восьмигранным фонариком. Стены облицованы серым гранитом.
+Внутри и снаружи собор украшен скульптурой, выполненной скульпторами И. П. Витали, Н. С. Пименовым, П. К. Клодтом и др.
+Многочисленные живописные и мозаичные картины покрывают стены и своды внутри собора. Они исполнены художниками К. П. Брюлловым, Ф. А. Бруни, П. В. Басиным и др.
+Во внутренней отделке использованы многие породы ценных камней - лазурит, малахит, порфир и мраморы различных оттенков.
+Внушительное здание собора оформлено четырьмя портиками с колоннами коринфского ордера. Плоскости стен прорезаны большими арочными окнами. Углы украшены пилястрами. По сторонам установлены четыре колокольни. Собор завершается высоким барабаном, увенчанным золоченым куполом с восьмигранным фонариком. Стены облицованы серым гранитом.</p><p>Внутри и снаружи собор украшен скульптурой, выполненной скульпторами И. П. Витали, Н. С. Пименовым, П. К. Клодтом и др.
+Многочисленные живописные и мозаичные картины покрывают стены и своды внутри собора. Они исполнены художниками К. П. Брюлловым, Ф. А. Бруни, П. В. Басиным и др.
+Во внутренней отделке использованы многие породы ценных камней - лазурит, малахит, порфир и мраморы различных оттенков.
+http://www.citywalls.ru/house9240.html</p><p>В ночь с 11 на 12 апреля 1931 года в Исаакиевском соборе в присутствии 7 тысяч зрителей впервые качнули маятник Фуко. С показа опыта с самым большим в мире маятником Фуко в Исаакиевском соборе был открыт Государственный антирелигиозный музей. На стальной проволоке диаметром 1 мм и длиной 98 м был подвешен бронзовый шар массой 60 кг. Достаточно северное положение города обеспечивало значительное отклонение маятника – за час примерно 13°. Это в два с лишним раза больше, чем у самого Фуко в Пантеоне. За одно колебание плоскость качаний смещалась на 6 мм, что было хорошо видно. Выбором собора в качестве здания для подвески маятника послужило не богоборчество, а высота потолка. Но все течет, все меняется, и 17 июня 1990 года, в воскресенье, в Исаакиевском соборе, некогда первом по своей значимости храме Русской Православной Церкви, вновь состоялось торжественное богослужение. Божественную литургию св. Иоанна Златоуста здесь совершил Святейший патриарх Московский и всея Руси Алексий II. Маятник снят в 1992(86?) году, как не соответствующий назначению здания. Сейчас бронзовый шар лежит в хранилище, в подвалах Собора. Помещен на вечное хранение, включен в блокадную экспозицию как часть городской истории.
+Интересные фотографии:http://isl.livejournal.com/343954.html</p><p>Храм во имя св. прп. Исаакия Далматского задуман еще Петром I, день рождения которого приходится на день памяти этого святого. Нынешнему собору предшествовали три храма, оказавшиеся недолговечными. 9 июля 1819 в присутствии Императора Александра I был заложен новый собор по проекту арх. О. Монферрана, самый высокий в городе (101, 5 м) и самый вместительный (в нем может молиться одновременно до 14 тыс. человек). Строительство было начато в 1825 и длилось почти 40 лет. Освящен 12 июня 1858 во имя св. прп. Исаакия Далматского митрополитом Григорием как кафедральный собор. В 1928 закрыт. В 1957 собор открыт как музей-памятник, охраняемый государством. В 1992 принято решение о совместном использовании собора верующими и музеем. Храм имеет три престола: центральный – во имя св. прп. Исаакия Далматского (престольный праздник 12 июня); левый придел – св. блгв. вел. кн. Александра Невского (12 сентября, 6 декабря); правый – св. вмц. Екатерины (7 декабря). Особо чтимая святыня – список Тихвинской иконы Божией Матери.
+http://globus.aquaviva.ru/sobor-sv-prp-isaakiya-dalmatskogo-isaakievskiy</p><p>Клир:
+1)ключарь — протоиерей Георгий Николаевич Минаев http://globus.aquaviva.ru/people/minaev22162
+2)протоиерей Алексий Валерьевич Суслов http://globus.aquaviva.ru/people/suslov22434
+3)диакон Сергей Валерьевич Коростылев http://globus.aquaviva.ru/people/korostylev</p><p>Богослужения: по воскресным дням (по особому расписанию, согласованному с администрацией Музея «Исаакиевский собор» и утвержденному Высокопреосвященнейшим митрополитом Владимиром). Литургия: 10.00 или 11.00. Всенощное бдение накануне: 16.00 или 17.00. Кроме того, в храме совершаются: Рождественская вечерня 8 января (17.00); Пасхальная вечерня в понедельник Светлой седмицы (17.00); в престольный праздник прп. Исаакия Далматского – Всенощное бдение (11 июня) и Литургия (12 июня); Литургия в день основания Санкт-Петербурга (27 мая).
+http://globus.aquaviva.ru/sobor-sv-prp-isaakiya-dalmatskogo-isaakievskiy</p><p>Расписание богослужений в соборе святого преподобного Исаакия Далматского (Исаакиевский собор) 
+http://www.cathedral.ru/raspisanie_bogoslugenii На колоннаду Исаакиевского собора ведет каменная, винтовая лестница из 262-х ступений.</p><p>Фотоальбом Исаакиевский собор, 2014 год: https://fotki.yandex.ru/users/amskhalaya/album/218964/</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-35">
+            <img src="http://photos.wikimapia.org/p/00/00/79/81/69_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/85/68/34_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/56/38/68_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/61/26/84_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/55/28/23_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/70/63_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/71/08_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-35', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-36"></a>
+        <h2 onclick="window.location.href='#';">Лестница</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-36">
+            <img src="http://photos.wikimapia.org/p/00/02/43/04/33_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-36', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-37"></a>
+        <h2 onclick="window.location.href='#';">Арка между домами №№ 7 и 9 </h2>
+        <p>http://www.citywalls.ru/house5104.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-37">
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/89_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/90_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-37', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-38"></a>
+        <h2 onclick="window.location.href='#';">Мемориальные следы от снаряда</h2>
+        <p>На двух колоннах западного портика собора в мемориальных целях были оставлены следы от попадания осколков вражеского снаряда. Текст на памятной доске: "Это следы одного из 148478 снарядов, выпущенных фашистами по Ленинграду в 1941-1944 г.г."
+http://www.lenww2.ru/index.php/region00/area21?id=1524</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-38">
+            <img src="http://photos.wikimapia.org/p/00/03/65/77/77_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/65/77/78_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/71/01_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/71/02_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/47/71/04_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-38', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-39"></a>
+        <h2 onclick="window.location.href='#';">Лестница</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-39">
+            <img src="http://photos.wikimapia.org/p/00/02/43/04/21_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/55/28/39_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-39', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-40"></a>
+        <h2 onclick="window.location.href='#';">Доходный дом О. Н. Рукавишниковой</h2>
+        <p>Архитекторы:
+Красовский А. Ф.
+Курзанов В. Р.
+Год постройки: 	1880-1881
+Стиль:Эклектика</p><p>http://www.citywalls.ru/house5104.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-40">
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/99_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/85_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/73/99/86_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/94/65/93_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/96/21/51_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/05/45/65/95_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-40', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-41"></a>
+        <h2 onclick="window.location.href='#';">Дом кн. А. Я. Лобанова-Ростовского - Здание Военного министерства</h2>
+        <p>Вознесенский пр., 1 - Исаакиевская пл., 2 - Адмиралтейский пр., 12
+1817-1820 гг. - арх. О. Монферран </p><p>Сайт дома - http://www.lionpalace.ru</p><p>Дом возведен в 1817-1820 гг. для князя А. Я. Лобанова-Ростовского арх. О. Монферраном. Треугольное в плане здание обращено главным фасадом к Адмиралтейскому пр. Главный фасад украшен 8-колонным портиком, по сторонам центральной арки - беломраморные фигуры львов (скульпт. П. Трискорни). Фасад, обращенный к Исаакиевской пл., почти повторяет главный. Фасад по Вознесенскому пр. решен более скромно.</p><p>Парадные помещения расположены во втором этаже. По проекту Монферрана здесь должны были располагаться обширные залы и небольшой театр, но проект не был осуществлен, интерьеры получили более скромную отделку. Сохранилась первоначальная отделка вестибюля и парадной лестницы.</p><p>1830-е - 1917 - Военное министерство
+1936-1937 - Ощество "Старый Петербург - Новый Ленинград" </p><p>В 1926-1928 гг. в доме жил биолог, генетик, академик АН СССР Николай Иванович Вавилов (1887-1943).
+http://www.citywalls.ru/house2793.html</p><p>Хозяин дома, известный библиофил и коллекционер А.Я. Лобанов-Ростовский, прожив в нём несколько лет, решил разыграть его в лотерею. Для этого был выпущен миллион лотерейных рублёвых билетов; на один из них должен был пасть выигрыш - дом князя. Но Николай I запретил эту коммерческую аферу и предложил князю продать в казну дом и уникальную библиотеку, за которую Лобанову-Ростовскому была назначена пожизненная пенсия.
+Вплоть до 1917 года в доме со львами размещалось Военное министерство России. После Октября он взят под охрану государства.  
+ 
+В 2002 году дом со львами перешёл к Управлению делами президента, которое намеревалось приспособить его для переезжавшего в Петербург Конституционного суда. Однако позже было решено создать в его стенах самый фешенебельный отель в городе, готовый принимать высших государственных лиц. Здание было передано в аренду на 49 лет компании ЗАО «Тристар Инвестмент Холдингс». 
+Поскольку дом Лобанова-Ростовского включён в федеральный список охраняемых объектов культурного наследия, вопросы его реконструкции вызвали бурную полемику как в архитектурной среде, так и в прессе. К разработке проекта были привлечены ведущие специалисты: архитектор Евгений Герасимов (реконструкция) и Рафаэль Даянов (реставрация охранных зон).
+Главный вопрос, который волнует общественность: как новые функции здания согласуются с его исторической «оболочкой», что будет сохранено и отреставрировано, а чем придётся пожертвовать. В случае с домом Лобанова понятие «первоначальные интерьеры» достаточно условно. Уже в 1829 году, когда в дом въехало Военное министерство, оно начало перепланировать его для своих нужд. Возможно, даже оформление парадной лестницы с широким скульптурным фризом, на котором изображены воинские доспехи, было сделано для министерства, а не для первого владельца - тоже, впрочем, бравого генерала, отличившегося в кампании против Наполеона. Для министерских служащих были устроены просторные кабинеты, которые в советское время служили классами средней школы, а затем в них располагался Проектный институт № 1. В итоге охранная зона нового отеля включает парадный вестибюль со стороны Адмиралтейского проспекта, двухмаршевую парадную лестницу с камином на площадке второго этажа, анфиладу второго этажа и ещё одну комнату, историческую ценность которой установили уже в процессе реставрации.
+Большой резонанс вызвала история с обустройством мансарды, хотя привычный для горожан силуэт здания - низкая плоская крыша - был результатом послевоенной переделки. После долгих консультаций с охранными ведомствами Петербурга инвестору удалось найти компромиссный вариант: «замаскировать» мансардный этаж под исторический экстерьер. Президентский люкс площадью 250 кв. м будет располагаться окнами на Адмиралтейство, прямо надо львами, над аркадой первого этажа. Апартаменты включают две спальни, обеденный зал на 14 персон, кабинет, зону отдыха и террасу с видом на сад. Всего в отеле запланировано 183 номера: 157 стандартных, 26 класса люкс. В подземной части здания предусмотрен просторный бальный зал. Для деловых встреч - 6 конференц-залов на первом этаже и бар «Библиотека» с видом на Дворцовую площадь. В четырёхэтажном флигеле во внутреннем дворе разместится спа-комплекс, а в атриуме - кафе-ресторан «Зимний сад», всегда открытые и для гостей отеля, и для горожан. Подобный спектр услуг и первоклассный набор номеров позволят отелю Four Seasons Saint Petersburg принимать лидеров «Большой восьмёрки».
+http://petersburg-history.narod.ru/p313.htm</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-41">
+            <img src="http://photos.wikimapia.org/p/00/00/60/95/86_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/34/84_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/64/62/29_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/64/62/35_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/64/62/36_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/64/62/38_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/02/17/57/75_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-41', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-42"></a>
+        <h2 onclick="window.location.href='#';">Адмиралтейский сад</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-42">
+            <img src="http://photos.wikimapia.org/p/00/04/94/65/78_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-42', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-43"></a>
+        <h2 onclick="window.location.href='#';">Туалет</h2>
+        <p>Платный общественный туалет.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-43">
+            <img src="http://photos.wikimapia.org/p/00/00/78/65/78_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/78/65/79_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/78/65/80_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/39/46/06_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/04/45/40/27_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-43', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-44"></a>
+        <h2 onclick="window.location.href='#';">Причал</h2>
+        <p></p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-44">
+            <img src="http://photos.wikimapia.org/p/00/04/94/65/81_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-44', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-45"></a>
+        <h2 onclick="window.location.href='#';">Особняк Ф. Л. Миллера</h2>
+        <p>Здание возведено во второй половине XVIII века, точное время его создания и автор проекта неизвестны. В 1879 - 1880 оно было кардинально перестроено в духе эклектики академиком архитектуры Фердинандом Логиновичем Миллером под собственные нужды.</p><p>http://www.citywalls.ru/house1217.html</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-45">
+            <img src="http://photos.wikimapia.org/p/00/00/74/00/99_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/74/01/00_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/74/37_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/74/39_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/74/42_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/74/47_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-45', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-46"></a>
+        <h2 onclick="window.location.href='#';">Здесь был Адмиралтейский ров</h2>
+        <p>Ров Адмиралтейской крепости, основанный еще в 1704 году. Соединялся с Адмиралтейским Каналом, который помимо транспортной функции тоже был частью оборонительной системы Адмиралтейства. Участок канала от рва до современного Конногвардейского бульвара был засыпан при перестройке Адмиралтейства 1806 - 1823 годов архитектором А.Д.Захаровым, тогда же были снесены все фортификационные сооружения Адмиралтейства, на их месте разбит бульвар, к концу XIX века ставший Александровским садом. Спрямленный ров, по замыслу Захарова, сохранился между двумя П-образными корпусами Адмиралтейства и с двух сторон выходил в Неву под соединяющими здания арками. Окончательно засыпан к концу 70-х годов XIX века.
+Адмиралтейский канал на месте Конногвардейского бульвара был засыпан за ненадобностью в 1844 – 1845 годах.</p><p>На фото 1861 года ров хорошо просматривается.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-46">
+            <img src="http://photos.wikimapia.org/p/00/00/57/26/97_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/26/57_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/26/58_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/26/96_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/00/57/27/02_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-46', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-47"></a>
+        <h2 onclick="window.location.href='#';">Бизнес-центр &amp;amp;quot;Черноморский, 4&amp;amp;quot;</h2>
+        <p>Бывший служебный дом дворца великого князя Михаила Михайловича. Соединён с дворцом переходом на уровне второго этажа. 
+Ныне (2014 г.) - бизнес-центр "Черноморский, 4".</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-48"></a>
+        <h2 onclick="window.location.href='#';">Порфировые вазы</h2>
+        <p>На спуске установлены большие порфировые вазы. они были установлены на чугунные постаменты с волютами, отлитыми по проекту архитектора Л. И. Шарлеманя. Эти пьедесталы были сделаны вместе с пьедесталами львов Дворцовой пристани.[3]</p><p>Две вазы выполнены из полированного порфира на Эльфдаленской гранильной фабрике в Швеции. В 1830 году они прибыли в Россию как дар короля Швеции и находились в Таврическом дворце до 1832 года. После этого они были установлены на Дворцовой пристани вместе со львами как украшение в 1832 году, и, в связи с открытием движения по Адмиралтейской набережной, были перенесены на это место.</p><p>Фото 2014 года: https://fotki.yandex.ru/next/users/amskhalaya/album/215551/view/883994?page=21
+https://fotki.yandex.ru/next/users/amskhalaya/album/215551/view/883995?page=21
+https://fotki.yandex.ru/next/users/amskhalaya/album/215551/view/883997?page=21</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-48">
+            <img src="http://photos.wikimapia.org/p/00/00/61/08/84_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/65/78/57_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-48', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24">
+        <a name="object-49"></a>
+        <h2 onclick="window.location.href='#';">Статуи Диоскуров</h2>
+        <p>В 1817 г. перед входом были установлены мраморные скульптурные группы Диоскуров. Они были выполнены в Италии скульптором П. Трискорни. В 1840-х гг. скульптуры были перенесены к зданию казарм в Конногвардейском пер. Возвращены только в 1954 г.</p><!-- <p>...</p><p>...</p> -->
+        <!--sup>59.93616,30.30566</sup-->
+        
+        <div class="galleria-49">
+            <img src="http://photos.wikimapia.org/p/00/01/52/98/41_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/52/98/42_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/52/98/44_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/66/94/86_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/01/81/37/57_big.jpg" title=""/>
+            <img src="http://photos.wikimapia.org/p/00/03/38/00/59_big.jpg" title=""/>
+            
+        </div>
+        <script>
+            Galleria.run('.galleria-49', {
+//                width: '100%',
+                height: 700
+            });
+        </script>
+        
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+
+
+
+<div class="pure-g footer">
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+    <div class="pure-u-22-24 pure-u-lg-20-24 footer-text">
+        ПОДЕЛИТЬСЯ
+    </div>
+    <div class="pure-u-1-24 pure-u-lg-2-24"></div>
+</div>
+
+</body>
+</html>
