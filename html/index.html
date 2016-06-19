@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        html{text-align:center;}
+        body{width:512px;margin:0 auto;font:18px monaco;}
+        label.lbl input[type="file"] {
+            position: fixed;
+            top: -1000px;
+        }
+        .lbl {width:512px;height:512px;background:url('html/static/upload-button.png');display: inline-block;}
+        .lbl:hover {}
+        .lbl:active {}
+        .lbl :invalid + span{color: #A44;}
+        .lbl :valid + span{color: #4A4;}
+        #loader{display:none;width:192px;height:12px;margin:0 auto;background:url('html/static/loading-bar.gif');}
+    </style>
+    <script>
+        function showLoader() {
+            document.getElementById("loader").style.display = "inline-block";
+        }
+    </script>
 </head>
 <body>
-    <h1>Загрузите GPX-файл</h1>
-    <form enctype="multipart/form-data" action="/upload" method="post">
-        <input type="file" name="gpx">
-        <input type="submit" value="Загрузить">
+    <h1>АПИ Сал</h1>
+    <form enctype="multipart/form-data" action="/upload" method="post" id="upload-form">
+        <label class="lbl">
+            <input type="file" name="gpx" required onchange="/*this.form.submit();*/showLoader()" />
+        </label>
+        <div id="loader"></div>
     </form>
 </body>
 </html>
