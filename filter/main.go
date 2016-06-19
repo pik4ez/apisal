@@ -35,16 +35,15 @@ func main() {
 		}
 
 		titleLen := utf8.RuneCountInString(object.Title) > 0
-		descLen := utf8.RuneCountInString(object.Description) > 0
+		//descLen := utf8.RuneCountInString(object.Description) > 0
 		imagesCount := len(object.Images)
 		imagesExist := imagesCount > 0
 
-		if !titleLen && !descLen && !imagesExist {
+		if imagesExist && titleLen {
+			writer.WriteObject(object)
 			continue
 		}
-		if imagesCount < photosMin {
-			continue
-		}
+
 		if utf8.RuneCountInString(object.Title) < titleLenMin {
 			continue
 		}
