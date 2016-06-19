@@ -10,7 +10,7 @@
 	| ./injector-legature/injector-legature \
 	| ./filter/filter > ./cache/objects_prod.txt
 
-cat ./cache/objects_prod.txt | ./renderer-babe/renderer-babe.php > $2
+cat ./cache/objects_prod.txt | ./renderer-babe/renderer-babe.php > "$2"
 
 ./renderer-html/renderer-html \
 	-o ./cache/objects_prod.txt \
